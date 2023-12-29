@@ -82,20 +82,7 @@ presenter.ToCreateNewRecipeClicked();
         return true;
 
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        item=men
-        switch (item.getItemId()) {
-            case R.id.:
-                newGame();
-                return true;
-            case R.id.help:
-                showHelp();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+
 
     
     }
