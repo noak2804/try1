@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mainRecipe"
+        android:onClick="mainRecipe"
+        android:title="Main recipes"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/createNewRecipe"
+        android:onClick="createRecipe"
+        android:title="Create New Recipe" />
+    <item
+        android:id="@+id/userProfile"
+        android:onClick="userProfile"
+        android:title="User Profile" />
+
+</menu>
