@@ -75,13 +75,13 @@ presenter.ToCreateNewRecipeClicked();
         Intent intent=new Intent(this, UserProfileActivity.class);
         startActivity(intent);
     }
-   @Override
+  /* @Override
     public boolean onCreateOptionsMenu(Menu menu_recipe) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_recipes, menu_recipe);
         return true;
 
-    }
+    }*/
 
 
     

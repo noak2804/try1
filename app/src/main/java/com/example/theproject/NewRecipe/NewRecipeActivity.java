@@ -14,6 +14,8 @@ import com.example.theproject.model.Ingredients;
 import com.example.theproject.model.RecipeInformation;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class NewRecipeActivity extends AppCompatActivity {
 ArrayList <View>ingredientArray =new ArrayList<View>();
