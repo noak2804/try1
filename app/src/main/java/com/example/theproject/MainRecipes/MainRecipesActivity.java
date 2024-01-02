@@ -1,7 +1,10 @@
 package com.example.theproject.MainRecipes;
 
+import static com.example.theproject.R.id.toolbar;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +31,7 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_recipes);
         presenter=new MainRecipesPresenter(this);
+
     }
     public void setRecyclerBest(ArrayList<RecipeInformation> recipes)
     {
