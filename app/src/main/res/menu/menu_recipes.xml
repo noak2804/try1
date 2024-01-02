@@ -4,16 +4,13 @@
 
     <item
         android:id="@+id/mainRecipe"
-        android:onClick="mainRecipe"
         android:title="Main recipes"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/createNewRecipe"
-        android:onClick="createRecipe"
         android:title="Create New Recipe" />
     <item
         android:id="@+id/userProfile"
-        android:onClick="userProfile"
         android:title="User Profile" />
 
 </menu>

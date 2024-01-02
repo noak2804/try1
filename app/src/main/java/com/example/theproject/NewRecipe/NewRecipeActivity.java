@@ -1,15 +1,23 @@
 package com.example.theproject.NewRecipe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.R;
+import com.example.theproject.UserProfile.UserProfileActivity;
 import com.example.theproject.model.Ingredients;
 import com.example.theproject.model.RecipeInformation;
 
@@ -31,7 +39,7 @@ EditText amount;
         setContentView(R.layout.activity_new_recipe);
         presenter=new NewRecipePresenter(this);
         deleteButton=findViewById(R.id.delete_button);
-         layout_ingredients=findViewById(R.id.ingerdientLayoutRecipe);
+        layout_ingredients=findViewById(R.id.ingerdientLayoutRecipe);
 
 
     }
@@ -68,5 +76,35 @@ EditText amount;
         {
             deleteButton.setVisibility(View.INVISIBLE);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu_recipe) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_recipes, menu_recipe);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+        if(id==R.id.mainRecipe)
+        {
+            Intent intent=new Intent(this, MainRecipesActivity.class);
+            startActivity(intent);
+        }
+        else if(id==R.id.createNewRecipe)
+        {
+            Intent intent=new Intent(this,NewRecipeActivity.class);
+            startActivity(intent);
+        }
+        else if(id==R.id.userProfile)
+        {
+            Intent intent=new Intent(this, UserProfileActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

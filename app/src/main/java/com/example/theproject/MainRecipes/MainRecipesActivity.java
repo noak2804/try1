@@ -1,5 +1,6 @@
 package com.example.theproject.MainRecipes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -75,14 +76,33 @@ presenter.ToCreateNewRecipeClicked();
         Intent intent=new Intent(this, UserProfileActivity.class);
         startActivity(intent);
     }
-  /* @Override
+   @Override
     public boolean onCreateOptionsMenu(Menu menu_recipe) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_recipes, menu_recipe);
         return true;
 
-    }*/
-
-
-    
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+        if(id==R.id.mainRecipe)
+        {
+            Intent intent=new Intent(this, MainRecipesActivity.class);
+            startActivity(intent);
+        }
+       else if(id==R.id.createNewRecipe)
+        {
+            Intent intent=new Intent(this,NewRecipeActivity.class);
+            startActivity(intent);
+        }
+       else if(id==R.id.userProfile)
+        {
+            Intent intent=new Intent(this,UserProfileActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
