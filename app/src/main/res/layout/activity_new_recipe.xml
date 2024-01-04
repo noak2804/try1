@@ -84,7 +84,7 @@
                     android:layout_marginTop="70dp"
                     android:background="@drawable/background_button"
                     android:enabled="true"
-                    android:fontFamily="serif"
+                    android:fontFamily="sans-serif-medium"
                     android:onClick="delete_button"
                     android:text="remove"
                     android:textColor="@color/white"

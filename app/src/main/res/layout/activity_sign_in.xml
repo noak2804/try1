@@ -81,10 +81,11 @@
 
     <EditText
         android:id="@+id/emailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:background="@drawable/border_text"
         android:ems="10"
-        android:hint="Email"
+        android:hint="   Email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,10 +94,11 @@
 
     <EditText
         android:id="@+id/editTextTextPassword2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:background="@drawable/border_text"
         android:ems="10"
-        android:hint="password"
+        android:hint="   password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
