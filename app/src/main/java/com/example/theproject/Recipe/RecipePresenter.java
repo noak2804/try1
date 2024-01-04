@@ -6,12 +6,15 @@ public class RecipePresenter {
     public RecipePresenter(RecipeActivity view) {
         this.view = view;
     }
-    public void BackClicked()
-    {
-        view.navigatetoMainRecipes();
-    }
-    public void groceryListClicked()
+    public void addGroceryListClicked()
     {
         view.navigatetoGroceryList();
     }
+    public void ToCreateNewRecipeClicked()
+    {
+        view.navigatetoCreateNewRecipe();
+    }
+    public void ToUserProfile(){view.navigatetoUserProfile();}
+    public void ToGroceryList(){view.navigatetoGroceryList();}
+    public void ToMainRecipes(){view.navigatetoMainRecipes();}
 }

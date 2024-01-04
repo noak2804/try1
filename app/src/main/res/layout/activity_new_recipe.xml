@@ -44,14 +44,15 @@
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="270dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/name"
-                    android:layout_width="match_parent"
+                    android:layout_width="270dp"
                     android:layout_height="wrap_content"
-                    android:hint="name" />
+                    android:hint="   name" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -104,8 +105,9 @@
             <EditText
                 android:id="@+id/preparation"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/border_text"
                 android:ems="10"
                 android:inputType="text" />
 
@@ -121,8 +123,11 @@
 
             <EditText
                 android:id="@+id/cook_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_gravity="left"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_text"
                 android:ems="10"
                 android:inputType="time" />
 

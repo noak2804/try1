@@ -5,12 +5,15 @@
     <item
         android:id="@+id/mainRecipe"
         android:title="Main recipes"
-        app:showAsAction="never" />
+         />
     <item
         android:id="@+id/createNewRecipe"
         android:title="Create New Recipe" />
     <item
         android:id="@+id/userProfile"
         android:title="User Profile" />
+    <item
+        android:id="@+id/groceryList"
+        android:title="Grocery List" />
 
 </menu>

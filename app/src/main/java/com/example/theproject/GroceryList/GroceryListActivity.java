@@ -31,14 +31,6 @@ public class GroceryListActivity extends AppCompatActivity {
      namesRecipe.setText("name");
      ingredList.setText("ingred");
     }
-    public void navigatetoRecipe()
-    {
-        Intent intent=new Intent(this, RecipeActivity.class);
-        startActivity(intent);
-    }
-    public void backToRecipe(View view) {
-        presenter.ToRecipe();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu_recipe) {
@@ -47,6 +39,31 @@ public class GroceryListActivity extends AppCompatActivity {
         return true;
 
     }
+    public void navigatetoRecipe()
+    {
+        Intent intent=new Intent(this, RecipeActivity.class);
+        startActivity(intent);
+    }
+    public void navigatetoCreateNewRecipe()
+    {
+        Intent intent=new Intent(this, NewRecipeActivity.class);
+        startActivity(intent);
+    }
+    public void navigatetoUserProfile()
+    {
+        Intent intent=new Intent(this, UserProfileActivity.class);
+        startActivity(intent);
+    }
+    public void navigatetoGroceryList()
+    {
+        Intent intent=new Intent(this, GroceryListActivity.class);
+        startActivity(intent);
+    }
+    public void navigatetoMainRecipes()
+    {
+        Intent intent=new Intent(this, MainRecipesActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -54,18 +71,19 @@ public class GroceryListActivity extends AppCompatActivity {
         int id=item.getItemId();
         if(id==R.id.mainRecipe)
         {
-            Intent intent=new Intent(this, MainRecipesActivity.class);
-            startActivity(intent);
+            presenter.ToMainRecipes();
         }
         else if(id==R.id.createNewRecipe)
         {
-            Intent intent=new Intent(this, NewRecipeActivity.class);
-            startActivity(intent);
+            presenter.ToCreateNewRecipeClicked();
         }
         else if(id==R.id.userProfile)
         {
-            Intent intent=new Intent(this, UserProfileActivity.class);
-            startActivity(intent);
+            presenter.ToUserProfile();
+        }
+        else if(id==R.id.groceryList)
+        {
+            presenter.ToGroceryList();
         }
         return super.onOptionsItemSelected(item);
     }

@@ -79,16 +79,25 @@ RecipePresenter presenter;
         Intent intent=new Intent(this, MainRecipesActivity.class);
         startActivity(intent);
     }
-    public void backToMainRecipe(View view) {
-       presenter.BackClicked();
-    }
+
     public void navigatetoGroceryList()
     {
         Intent intent=new Intent(this, GroceryListActivity.class);
         startActivity(intent);
     }
-    public void groceryList(View view) {
-        presenter.groceryListClicked();
+
+    public void navigatetoCreateNewRecipe()
+    {
+        Intent intent=new Intent(this, NewRecipeActivity.class);
+        startActivity(intent);
+    }
+    public void navigatetoUserProfile()
+    {
+        Intent intent=new Intent(this, UserProfileActivity.class);
+        startActivity(intent);
+    }
+    public void addGroceryList(View view) {
+        presenter.addGroceryListClicked();
     }
 
     @Override
@@ -105,18 +114,19 @@ RecipePresenter presenter;
         int id=item.getItemId();
         if(id==R.id.mainRecipe)
         {
-            Intent intent=new Intent(this, MainRecipesActivity.class);
-            startActivity(intent);
+            presenter.ToMainRecipes();
         }
         else if(id==R.id.createNewRecipe)
         {
-            Intent intent=new Intent(this, NewRecipeActivity.class);
-            startActivity(intent);
+            presenter.ToCreateNewRecipeClicked();
         }
         else if(id==R.id.userProfile)
         {
-            Intent intent=new Intent(this, UserProfileActivity.class);
-            startActivity(intent);
+            presenter.ToUserProfile();
+        }
+        else if(id==R.id.groceryList)
+        {
+            presenter.ToGroceryList();
         }
         return super.onOptionsItemSelected(item);
     }

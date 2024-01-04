@@ -34,4 +34,7 @@ public MainRecipesPresenter(MainRecipesActivity view)
     {
         view.navigatetoCreateNewRecipe();
     }
+    public void ToUserProfile(){view.navigatetoUserProfile();}
+    public void ToGroceryList(){view.navigatetoGroceryList();}
+    public void ToMainRecipes(){view.navigatetoMainRecipes();}
 }

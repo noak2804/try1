@@ -17,8 +17,11 @@ public class UserProfilePresenter {
         view.setRecyclerMine(recipes);
         view.setRecyclerSaved(recipes);
     }
-    public void groceryListClicked()
+    public void ToCreateNewRecipeClicked()
     {
-        view.navigatetoGroceryList();
+        view.navigatetoCreateNewRecipe();
     }
+    public void ToUserProfile(){view.navigatetoUserProfile();}
+    public void ToGroceryList(){view.navigatetoGroceryList();}
+    public void ToMainRecipes(){view.navigatetoMainRecipes();}
 }

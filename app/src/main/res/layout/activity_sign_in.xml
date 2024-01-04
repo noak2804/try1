@@ -7,23 +7,6 @@
     android:background="@drawable/whatsapp_image_2023_12_08_at_17_40_07"
     tools:context=".RegisterSignIn.SignIn.SignInActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:hint="Email" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
@@ -38,21 +21,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="356dp" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="password" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView2"
@@ -79,6 +47,7 @@
         android:layout_marginEnd="10dp"
 
         android:background="@drawable/background_button"
+        android:fontFamily="sans-serif-medium"
         android:onClick="signInSubmit"
         android:text="continue"
         android:textColor="@color/white"
@@ -99,6 +68,7 @@
         android:layout_marginBottom="40dp"
 
         android:background="@drawable/background_button"
+        android:fontFamily="sans-serif-medium"
         android:onClick="toReg"
         android:text="need an account"
         android:textColor="@color/white"
@@ -108,5 +78,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signInSubmit"
         app:layout_constraintVertical_bias="0.502" />
+
+    <EditText
+        android:id="@+id/emailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

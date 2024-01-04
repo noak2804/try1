@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.theproject.GroceryList.GroceryListActivity;
 import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.R;
 import com.example.theproject.UserProfile.UserProfileActivity;
@@ -85,6 +86,26 @@ EditText amount;
         return true;
 
     }
+    public void navigatetoCreateNewRecipe()
+    {
+        Intent intent=new Intent(this, NewRecipeActivity.class);
+        startActivity(intent);
+    }
+    public void navigatetoUserProfile()
+    {
+        Intent intent=new Intent(this, UserProfileActivity.class);
+        startActivity(intent);
+    }
+    public void navigatetoGroceryList()
+    {
+        Intent intent=new Intent(this, GroceryListActivity.class);
+        startActivity(intent);
+    }
+    public void navigatetoMainRecipes()
+    {
+        Intent intent=new Intent(this, MainRecipesActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -92,18 +113,19 @@ EditText amount;
         int id=item.getItemId();
         if(id==R.id.mainRecipe)
         {
-            Intent intent=new Intent(this, MainRecipesActivity.class);
-            startActivity(intent);
+            presenter.ToMainRecipes();
         }
         else if(id==R.id.createNewRecipe)
         {
-            Intent intent=new Intent(this,NewRecipeActivity.class);
-            startActivity(intent);
+            presenter.ToCreateNewRecipeClicked();
         }
         else if(id==R.id.userProfile)
         {
-            Intent intent=new Intent(this, UserProfileActivity.class);
-            startActivity(intent);
+            presenter.ToUserProfile();
+        }
+        else if(id==R.id.groceryList)
+        {
+            presenter.ToGroceryList();
         }
         return super.onOptionsItemSelected(item);
     }

@@ -3,6 +3,8 @@ package com.example.theproject.MainRecipes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,10 +14,15 @@ import com.example.theproject.model.RecipeInformation;
 
 import java.util.ArrayList;
 
-public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.ViewHolder> {
+public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.ViewHolder> implements Filterable {
+
+
     ArrayList<RecipeInformation> recipes;
+    ArrayList<RecipeInformation> filteredRecipes;
+
     public MainRecipesAdapter(ArrayList<RecipeInformation> recipes){
         this.recipes=recipes;
+        this.filteredRecipes=recipes;
     }
     public interface RecipeClickListener{
         void recipeClick(RecipeInformation recipe);
@@ -35,19 +42,54 @@ public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MainRecipesAdapter.ViewHolder holder, int position) {
-        holder.name.setText(recipes.get(position).getName());
+        holder.name.setText(filteredRecipes.get(position).getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recipeClickListener.recipeClick(recipes.get(holder.getAdapterPosition()));
+                recipeClickListener.recipeClick(filteredRecipes.get(holder.getAdapterPosition()));
             }
         });
 
     }
 
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String charSequenceString = constraint.toString();
+                if (charSequenceString.isEmpty()) {
+                    filteredRecipes = recipes;
+                } else {
+                    ArrayList<RecipeInformation> filteredList = new ArrayList<RecipeInformation>();
+                    for (RecipeInformation recipe : recipes) {
+                        if (recipe.getName().toLowerCase().contains(charSequenceString.toLowerCase())) {
+                            filteredList.add(recipe);
+                        }
+                        filteredRecipes = filteredList;
+                    }
+
+                }
+                FilterResults results = new FilterResults();
+                results.values = filteredRecipes;
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults filterResults) {
+                filteredRecipes = (ArrayList<RecipeInformation> ) filterResults.values;
+                notifyDataSetChanged();
+            }
+
+        };
+
+
+    }
+
     @Override
     public int getItemCount() {
-        return recipes.size();
+        return filteredRecipes.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView name;

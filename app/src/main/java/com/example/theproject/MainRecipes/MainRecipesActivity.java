@@ -2,6 +2,7 @@ package com.example.theproject.MainRecipes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.theproject.GroceryList.GroceryListActivity;
 import com.example.theproject.NewRecipe.NewRecipeActivity;
 import com.example.theproject.R;
 import com.example.theproject.Recipe.RecipeActivity;
@@ -23,12 +25,28 @@ import java.util.ArrayList;
 public class MainRecipesActivity extends AppCompatActivity implements MainRecipesAdapter.RecipeClickListener {
 
     MainRecipesPresenter presenter;
+    private MainRecipesAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_recipes);
         presenter=new MainRecipesPresenter(this);
 
+
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String queryString) {
+                adapter.getFilter().filter(queryString);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String queryString) {
+                adapter.getFilter().filter(queryString);
+                return false;
+            }
+        });
 
     }
     public void setRecyclerBest(ArrayList<RecipeInformation> recipes)
@@ -65,19 +83,30 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         Intent intent=new Intent(this, NewRecipeActivity.class);
         startActivity(intent);
     }
-    public void createRecipe(View view) {
-presenter.ToCreateNewRecipeClicked();
+    public void navigatetoUserProfile()
+    {
+        Intent intent=new Intent(this, UserProfileActivity.class);
+        startActivity(intent);
     }
+    public void navigatetoGroceryList()
+    {
+        Intent intent=new Intent(this, GroceryListActivity.class);
+        startActivity(intent);
+    }
+    public void navigatetoMainRecipes()
+    {
+        Intent intent=new Intent(this, MainRecipesActivity.class);
+        startActivity(intent);
+    }
+
+
     @Override
     public void recipeClick(RecipeInformation recipe) {
         Intent intent = new Intent(this,RecipeActivity.class);
         startActivity(intent);
     }
 
-    public void userprofile(View view) {
-        Intent intent=new Intent(this, UserProfileActivity.class);
-        startActivity(intent);
-    }
+
    @Override
     public boolean onCreateOptionsMenu(Menu menu_recipe) {
         MenuInflater inflater = getMenuInflater();
@@ -92,18 +121,19 @@ presenter.ToCreateNewRecipeClicked();
         int id=item.getItemId();
         if(id==R.id.mainRecipe)
         {
-            Intent intent=new Intent(this, MainRecipesActivity.class);
-            startActivity(intent);
+            presenter.ToMainRecipes();
         }
        else if(id==R.id.createNewRecipe)
         {
-            Intent intent=new Intent(this,NewRecipeActivity.class);
-            startActivity(intent);
+            presenter.ToCreateNewRecipeClicked();
         }
        else if(id==R.id.userProfile)
         {
-            Intent intent=new Intent(this,UserProfileActivity.class);
-            startActivity(intent);
+           presenter.ToUserProfile();
+        }
+       else if(id==R.id.groceryList)
+        {
+            presenter.ToGroceryList();
         }
         return super.onOptionsItemSelected(item);
     }
