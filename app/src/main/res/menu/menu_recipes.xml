@@ -15,5 +15,8 @@
     <item
         android:id="@+id/groceryList"
         android:title="Grocery List" />
+    <item
+        android:id="@+id/logOut"
+        android:title="Log Out" />
 
 </menu>

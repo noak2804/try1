@@ -80,20 +80,7 @@
         app:layout_constraintVertical_bias="0.502" />
 
     <EditText
-        android:id="@+id/emailAddress"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:background="@drawable/border_text"
-        android:ems="10"
-        android:hint="   Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/loginPassword"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:background="@drawable/border_text"
@@ -104,5 +91,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_button" />
+
+    <EditText
+        android:id="@+id/signInEmailAddress"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:background="@drawable/border_text"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

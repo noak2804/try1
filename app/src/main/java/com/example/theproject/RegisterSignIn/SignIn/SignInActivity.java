@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.R;
@@ -25,7 +26,10 @@ public class SignInActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void signInSubmit(View view) {
-presenter.continueClicked();
+        EditText email = findViewById(R.id.signInEmailAddress);
+        EditText password = findViewById(R.id.loginPassword);
+
+        presenter.continueClicked(email.getText().toString(),password.getText().toString());
     }
     public void navigatetoRegister()
     {
