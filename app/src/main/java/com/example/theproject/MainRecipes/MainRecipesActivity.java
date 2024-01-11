@@ -19,6 +19,7 @@ import com.example.theproject.R;
 import com.example.theproject.Recipe.RecipeActivity;
 import com.example.theproject.UserProfile.UserProfileActivity;
 import com.example.theproject.model.RecipeInformation;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -115,6 +116,11 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
 
     }
 
+    public void logout() {
+
+        FirebaseAuth.getInstance().signOut();
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -123,17 +129,21 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         {
             presenter.ToMainRecipes();
         }
-       else if(id==R.id.createNewRecipe)
+        else if(id==R.id.createNewRecipe)
         {
             presenter.ToCreateNewRecipeClicked();
         }
-       else if(id==R.id.userProfile)
+        else if(id==R.id.userProfile)
         {
-           presenter.ToUserProfile();
+            presenter.ToUserProfile();
         }
-       else if(id==R.id.groceryList)
+        else if(id==R.id.groceryList)
         {
             presenter.ToGroceryList();
+        }
+        else if(id==R.id.logOut)
+        {
+            presenter.ToLogOut();
         }
         return super.onOptionsItemSelected(item);
     }

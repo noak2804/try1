@@ -21,6 +21,7 @@ import com.example.theproject.R;
 import com.example.theproject.UserProfile.UserProfileActivity;
 import com.example.theproject.model.Ingredients;
 import com.example.theproject.model.RecipeInformation;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -106,6 +107,10 @@ EditText amount;
         Intent intent=new Intent(this, MainRecipesActivity.class);
         startActivity(intent);
     }
+    public void logout() {
+
+        FirebaseAuth.getInstance().signOut();
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -126,6 +131,10 @@ EditText amount;
         else if(id==R.id.groceryList)
         {
             presenter.ToGroceryList();
+        }
+        else if(id==R.id.logOut)
+        {
+            presenter.ToLogOut();
         }
         return super.onOptionsItemSelected(item);
     }

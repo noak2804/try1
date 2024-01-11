@@ -14,5 +14,6 @@ public class NewRecipePresenter {
     public void ToUserProfile(){view.navigatetoUserProfile();}
     public void ToGroceryList(){view.navigatetoGroceryList();}
     public void ToMainRecipes(){view.navigatetoMainRecipes();}
+    public void ToLogOut(){view.logout();}
 }
 
