@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.theproject.GroceryList.GroceryListActivity;
 import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.R;
+import com.example.theproject.RegisterSignIn.Home.MainActivity;
 import com.example.theproject.UserProfile.UserProfileActivity;
 import com.example.theproject.model.Ingredients;
 import com.example.theproject.model.RecipeInformation;
@@ -110,6 +111,8 @@ EditText amount;
     public void logout() {
 
         FirebaseAuth.getInstance().signOut();
+        Intent intent=new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override

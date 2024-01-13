@@ -18,7 +18,9 @@ import com.example.theproject.MainRecipes.MainRecipesAdapter;
 import com.example.theproject.NewRecipe.NewRecipeActivity;
 import com.example.theproject.R;
 import com.example.theproject.Recipe.RecipeActivity;
+import com.example.theproject.RegisterSignIn.Home.MainActivity;
 import com.example.theproject.model.RecipeInformation;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -89,6 +91,12 @@ UserProfilePresenter presenter;
     public void groceryList(View view) {
         presenter.ToGroceryList();
     }
+    public void logout() {
+
+        FirebaseAuth.getInstance().signOut();
+        Intent intent=new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -109,6 +117,10 @@ UserProfilePresenter presenter;
         else if(id==R.id.groceryList)
         {
             presenter.ToGroceryList();
+        }
+        else if(id==R.id.logOut)
+        {
+            presenter.ToLogOut();
         }
         return super.onOptionsItemSelected(item);
     }

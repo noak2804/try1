@@ -15,6 +15,7 @@ import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.NewRecipe.NewRecipeActivity;
 import com.example.theproject.R;
 import com.example.theproject.Recipe.RecipeActivity;
+import com.example.theproject.RegisterSignIn.Home.MainActivity;
 import com.example.theproject.UserProfile.UserProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -68,6 +69,8 @@ public class GroceryListActivity extends AppCompatActivity {
     public void logout() {
 
         FirebaseAuth.getInstance().signOut();
+        Intent intent=new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
    @Override
