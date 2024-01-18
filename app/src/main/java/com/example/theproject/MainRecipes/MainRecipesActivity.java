@@ -27,7 +27,9 @@ import java.util.ArrayList;
 public class MainRecipesActivity extends AppCompatActivity implements MainRecipesAdapter.RecipeClickListener {
 
     MainRecipesPresenter presenter;
-    private MainRecipesAdapter adapter;
+    private MainRecipesAdapter adapter1;
+    private MainRecipesAdapter adapter2;
+    private MainRecipesAdapter adapter3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +41,20 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String queryString) {
-                adapter.getFilter().filter(queryString);
+                adapter1.getFilter().filter(queryString);
+                adapter2.getFilter().filter(queryString);
+
+                adapter3.getFilter().filter(queryString);
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String queryString) {
-                adapter.getFilter().filter(queryString);
+                adapter1.getFilter().filter(queryString);
+                adapter2.getFilter().filter(queryString);
+
+                adapter3.getFilter().filter(queryString);
                 return false;
             }
         });
@@ -54,30 +63,30 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
     public void setRecyclerBest(ArrayList<RecipeInformation> recipes)
     {
         RecyclerView recyclerView=findViewById(R.id.recycleRecipeBest);
-        MainRecipesAdapter mainRecipesAdapter=new MainRecipesAdapter(recipes);
-        mainRecipesAdapter.setRecipeClickListener(this);
+        adapter1=new MainRecipesAdapter(recipes);
+        adapter1.setRecipeClickListener(this);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mainRecipesAdapter);
+        recyclerView.setAdapter(adapter1);
     }
     public void setRecyclerBreakfastLunch(ArrayList<RecipeInformation> recipes)
     {
         RecyclerView recyclerView=findViewById(R.id.recycleRecipeBreakfastLaunch);
-        MainRecipesAdapter mainRecipesAdapter=new MainRecipesAdapter(recipes);
-        mainRecipesAdapter.setRecipeClickListener(this);
+        adapter2 =new MainRecipesAdapter(recipes);
+        adapter2.setRecipeClickListener(this);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mainRecipesAdapter);
+        recyclerView.setAdapter(adapter2);
     }
 
     public void setRecyclerSweets(ArrayList<RecipeInformation> recipes)
     {
         RecyclerView recyclerView=findViewById(R.id.sweets);
-        MainRecipesAdapter mainRecipesAdapter=new MainRecipesAdapter(recipes);
-        mainRecipesAdapter.setRecipeClickListener(this);
+        adapter3=new MainRecipesAdapter(recipes);
+        adapter3.setRecipeClickListener(this);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mainRecipesAdapter);
+        recyclerView.setAdapter(adapter3);
     }
 
     public void navigatetoCreateNewRecipe()

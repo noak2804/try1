@@ -11,6 +11,8 @@ public class RecipeInformation {
     ArrayList<Ingredients> ingredientArray;
     String preparation;
     String category;
+    boolean favorite;
+
 
     public RecipeInformation(String name, String preparation, String category) {
         this.name = name;

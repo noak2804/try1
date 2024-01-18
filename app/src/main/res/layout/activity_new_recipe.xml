@@ -56,6 +56,22 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addPhotos"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_button"
+                    android:text="add photo"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/ingerdientLayoutRecipe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -182,6 +198,12 @@
                 android:text="submit"
                 android:textColor="@color/white"
                 android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
 
         </LinearLayout>
     </ScrollView>
