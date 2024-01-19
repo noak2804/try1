@@ -57,7 +57,7 @@ EditText amount;
 
     public void submitNewRecipe(View view) {
         RecipeInformation recipeInformation;
-        recipeInformation=new RecipeInformation("s","sdf","k");
+        recipeInformation=new RecipeInformation("s",null,"k","breakfast",true,"4");
 
         for(int i=0;i<ingredientArray.size();i++)
         {

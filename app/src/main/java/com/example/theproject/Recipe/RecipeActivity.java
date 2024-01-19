@@ -30,6 +30,9 @@ RecipePresenter presenter;
     public int counter;
     Button timer;
     TextView time;
+    RatingBar ratingbar;
+    Button submitButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,14 +68,14 @@ RecipePresenter presenter;
         });
 
 
-        final RatingBar simpleRatingBar = (RatingBar) findViewById(R.id.ratingStars);
-        Button submitButton = (Button) findViewById(R.id.sendRatingStars);
+        submitButton = (Button) findViewById(R.id.sendRatingStars);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              /*  String totalStars = "Total Stars:: " + simpleRatingBar.getNumStars();
-                String rating = "Rating :: " + simpleRatingBar.getRating();
-                Toast.makeText(getApplicationContext(), totalStars + "\n" + rating, Toast.LENGTH_LONG).show();*/
+                ratingbar=(RatingBar)findViewById(R.id.ratingStars);
+
+                String rating=String.valueOf(ratingbar.getRating());
+                Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
             }
         });
     }

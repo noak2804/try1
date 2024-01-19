@@ -12,13 +12,18 @@ public class RecipeInformation {
     String preparation;
     String category;
     boolean favorite;
+    String ratingbar;
 
+    Image image;
 
-    public RecipeInformation(String name, String preparation, String category) {
+    public RecipeInformation(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, boolean favorite, String ratingbar) {
         this.name = name;
-        this.ingredientArray = new ArrayList<Ingredients>();
+        this.ingredientArray = ingredientArray;
         this.preparation = preparation;
         this.category = category;
+        this.favorite = favorite;
+        this.ratingbar = ratingbar;
+        this.image = null;
     }
 
     public ArrayList<Ingredients> getIngredientArray() {
@@ -55,5 +60,29 @@ public class RecipeInformation {
     public void addIng(Ingredients temp)
     {
         ingredientArray.add(temp);
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
+
+    public String getRatingbar() {
+        return ratingbar;
+    }
+
+    public void setRatingbar(String ratingbar) {
+        this.ratingbar = ratingbar;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

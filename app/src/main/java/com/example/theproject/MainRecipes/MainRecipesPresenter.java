@@ -8,28 +8,25 @@ public class MainRecipesPresenter {
     MainRecipesActivity view;
 public MainRecipesPresenter(MainRecipesActivity view)
 {
-
-
-
     this.view=view;
     ArrayList<RecipeInformation> recipes=new ArrayList<>(30);
     for (int i=0; i<30;i++)
     {
-        recipes.add(new RecipeInformation("n","x","z"));
+        recipes.add(new RecipeInformation("b+i",null,"z","best",true,"4"));
     }
     view.setRecyclerBest(recipes);
 
     ArrayList<RecipeInformation> recipesBreakfastLaunch=new ArrayList<>(30);
     for (int i=0; i<30;i++)
     {
-        recipesBreakfastLaunch.add(new RecipeInformation("n"+i,"x","z"));
+        recipesBreakfastLaunch.add(new RecipeInformation("l"+i,null,"z","lunch",true,"4"));
     }
     view.setRecyclerBreakfastLunch(recipesBreakfastLaunch);
 
     ArrayList<RecipeInformation> recipesSweets=new ArrayList<>(30);
     for (int i=0; i<30;i++)
     {
-        recipesSweets.add(new RecipeInformation("n"+i,"x","z"));
+        recipesSweets.add(new RecipeInformation("s"+i,null,"z","sweets",true,"4"));
     }
     view.setRecyclerSweets(recipesSweets);
 }

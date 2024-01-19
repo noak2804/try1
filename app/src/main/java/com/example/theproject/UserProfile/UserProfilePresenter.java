@@ -12,7 +12,7 @@ public class UserProfilePresenter {
         ArrayList<RecipeInformation> recipes=new ArrayList<>(30);
         for (int i=0; i<30;i++)
         {
-            recipes.add(new RecipeInformation("n","x","z"));
+            recipes.add(new RecipeInformation("b+i",null,"z","best",true,"4"));
         }
         view.setRecyclerMine(recipes);
         view.setRecyclerSaved(recipes);
