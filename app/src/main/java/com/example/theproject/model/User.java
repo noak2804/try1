@@ -10,22 +10,76 @@ public class User {
     String email;
     Integer phone;
     String password;
-    ArrayList<RecipeActivity> myRecipes;
+    String id;
+
     ArrayList<RecipeActivity> savedRecipes;
-    ArrayList<Ingredients> gregoryList;
 
-    public User()
-    {
 
-    }
+   public User(){
+       email="";
+       name="";
+       phone=null;
+       password="";
+       id="";
+       this.savedRecipes = new ArrayList<RecipeActivity>();
+   }
 
-    public User(String name, String email, Integer phone, String password, ArrayList<RecipeActivity> myRecipes, ArrayList<RecipeActivity> savedRecipes, ArrayList<Ingredients> gregoryList) {
+
+    public User(String name, String email, Integer phone, String password,String id) {
+       super();
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.myRecipes = new ArrayList<RecipeActivity>();
-        this.savedRecipes = new ArrayList<RecipeActivity>();
-        this.gregoryList = new ArrayList<Ingredients>();
+        this.id=id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public ArrayList<RecipeActivity> getSavedRecipes() {
+        return savedRecipes;
+    }
+
+    public void setSavedRecipes(ArrayList<RecipeActivity> savedRecipes) {
+        this.savedRecipes = savedRecipes;
+    }
+
 }

@@ -45,8 +45,9 @@ RegisterPresenter presenter;
     public void createSubmit(View view) {
         EditText email = findViewById(R.id.registerEmailAddress);
         EditText password = findViewById(R.id.registerPassword);
+        EditText name = findViewById(R.id.fullName);
+        EditText phone = findViewById(R.id.phone);
 
-
-       presenter.createClicked(email.getText().toString(),password.getText().toString());
+       presenter.createClicked(name.getText().toString(),email.getText().toString(),Integer.parseInt(phone.getText().toString()),password.getText().toString());
     }
 }
