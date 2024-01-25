@@ -1,6 +1,7 @@
 package com.example.theproject.MainRecipes;
 
 import com.example.theproject.model.RecipeInformation;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -12,21 +13,21 @@ public MainRecipesPresenter(MainRecipesActivity view)
     ArrayList<RecipeInformation> recipes=new ArrayList<>(30);
     for (int i=0; i<30;i++)
     {
-        recipes.add(new RecipeInformation("b+i",null,"z","best",null));
+        recipes.add(new RecipeInformation(null,"b"+1, FirebaseAuth.getInstance().getUid(),null,"","category",null,0));
     }
     view.setRecyclerBest(recipes);
 
     ArrayList<RecipeInformation> recipesBreakfastLaunch=new ArrayList<>(30);
     for (int i=0; i<30;i++)
     {
-        recipesBreakfastLaunch.add(new RecipeInformation("l"+i,null,"z","lunch",null));
+        recipesBreakfastLaunch.add(new RecipeInformation(null,"l"+1, FirebaseAuth.getInstance().getUid(),null,"","category",null,0));
     }
     view.setRecyclerBreakfastLunch(recipesBreakfastLaunch);
 
     ArrayList<RecipeInformation> recipesSweets=new ArrayList<>(30);
     for (int i=0; i<30;i++)
     {
-        recipesSweets.add(new RecipeInformation("s"+i,null,"z","sweets",null));
+        recipesSweets.add(new RecipeInformation(null,"s"+1, FirebaseAuth.getInstance().getUid(),null,"","category",null,0));
     }
     view.setRecyclerSweets(recipesSweets);
 }

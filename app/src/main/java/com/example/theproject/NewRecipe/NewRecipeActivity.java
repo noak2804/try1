@@ -31,15 +31,20 @@ import java.util.TimerTask;
 
 public class NewRecipeActivity extends AppCompatActivity {
 ArrayList <View>ingredientArray =new ArrayList<View>();
-TextView nameRecipe;
+String nameRecipe;
 Button deleteButton;
 TextView unit;
 EditText amount;
 ArrayList<Ingredients> ingredients;
     LinearLayout layout_ingredients;
     NewRecipePresenter presenter;
-    private final int GALLERY_REQ_CODE = 1000;
-    ImageView imgCamera;
+    TextView textView;
+    String preparation;
+    String category;
+    Integer cookTime;
+
+ //   private final int GALLERY_REQ_CODE = 1000;
+  //  ImageView imgCamera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +53,32 @@ ArrayList<Ingredients> ingredients;
         deleteButton=findViewById(R.id.delete_button);
         layout_ingredients=findViewById(R.id.ingerdientLayoutRecipe);
         ArrayList<Ingredients> ingredients=new ArrayList<Ingredients>(ingredientArray.size());
+
+        textView=findViewById(R.id.preparation);
+        preparation=textView.getText().toString();
+textView=findViewById(R.id.cook_time);
+cookTime=Integer.parseInt(textView.toString());
+
+      /*  imgCamera=findViewById(R.id.imgCamera);
+        Button btnGallery = findViewById(R.id.btnGallery);
+
+
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iGallery = new Intent(Intent.ACTION_PICK);
+                iGallery.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(iGallery,GALLERY_REQ_CODE);
+            }
+        });
+
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(iCamera,CAMERA_REQ_CODE);
+            }
+        });*/
 
     }
 
@@ -64,15 +95,17 @@ ArrayList<Ingredients> ingredients;
         for(int i=0;i<ingredientArray.size();i++)
         {
           View v =  ingredientArray.get(i);
-            nameRecipe=v.findViewById(R.id.nameIngred);
+            textView=v.findViewById(R.id.nameIngred);
+            nameRecipe=textView.getText().toString();
             unit=v.findViewById(R.id.unit);
             amount=v.findViewById(R.id.amount);
             int a=Integer.parseInt(amount.getText().toString());
            Ingredients temp=new Ingredients(nameRecipe.toString(),a,unit.toString());
            ingredients.add(temp);
         }
-
-presenter.CreateNewRecipeClicked(nameRecipe,ingredients,);
+        textView=findViewById(com.android.car.ui.R.id.category);
+        category=textView.getText().toString();
+        presenter.CreateNewRecipeClicked(nameRecipe,ingredients,preparation,category,null,cookTime);
     }
 
     public void delete_button(View view) {

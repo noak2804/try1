@@ -33,12 +33,12 @@ public class NewRecipePresenter {
     public void ToGroceryList(){view.navigatetoGroceryList();}
     public void ToMainRecipes(){view.navigatetoMainRecipes();}
     public void ToLogOut(){view.logout();}
-    public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, Image image)
+    public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, Image image,Integer cookTime)
     {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("recipes/").push();
 
-        RecipeInformation recipe=new RecipeInformation( myRef.getKey(),name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image );
+        RecipeInformation recipe=new RecipeInformation( myRef.getKey(),name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,cookTime);
         myRef.setValue(recipe);
 
 

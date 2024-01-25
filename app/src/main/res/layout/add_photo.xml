@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="@+id/imgCamera"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/imgCamera"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgCamera"
         app:layout_constraintVertical_bias="0.953"
         tools:ignore="MissingConstraints" />
 

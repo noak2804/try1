@@ -15,7 +15,7 @@ public class RecipeInformation {
     String category;
     Image image;
     ArrayList<String> usersId;
-
+Integer cookTime;
     public RecipeInformation()
     {
         name="";
@@ -26,8 +26,9 @@ public class RecipeInformation {
         userIdOwner="";
         recipeId="";
         this.ingredientArray = new ArrayList<>();
+        cookTime=null;
     }
-    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Image image) {
+    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Image image, Integer cookTime) {
         super();
         this.name = name;
         this.ingredientArray = ingredientArray;
@@ -37,6 +38,23 @@ public class RecipeInformation {
         usersId=new ArrayList<>();
         this.userIdOwner=ownerUserId;
         this.recipeId=recipeId;
+       this.cookTime=cookTime;
+    }
+
+    public String getRecipeId() {
+        return recipeId;
+    }
+
+    public void setRecipeId(String recipeId) {
+        this.recipeId = recipeId;
+    }
+
+    public Integer getCookTime() {
+        return cookTime;
+    }
+
+    public void setCookTime(Integer cookTime) {
+        this.cookTime = cookTime;
     }
 
     public String getUserIdOwner() {
@@ -91,21 +109,6 @@ public class RecipeInformation {
         ingredientArray.add(temp);
     }
 
-    public boolean isFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(boolean favorite) {
-        this.favorite = favorite;
-    }
-
-    public String getRatingbar() {
-        return ratingbar;
-    }
-
-    public void setRatingbar(String ratingbar) {
-        this.ratingbar = ratingbar;
-    }
 
     public Image getImage() {
         return image;

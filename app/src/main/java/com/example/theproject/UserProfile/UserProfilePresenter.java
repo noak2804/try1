@@ -1,6 +1,7 @@
 package com.example.theproject.UserProfile;
 
 import com.example.theproject.model.RecipeInformation;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ public class UserProfilePresenter {
         ArrayList<RecipeInformation> recipes=new ArrayList<>(30);
         for (int i=0; i<30;i++)
         {
-            recipes.add(new RecipeInformation("b+i",null,"z","best",true,"4"));
+            recipes.add(new RecipeInformation(null,"b"+1, FirebaseAuth.getInstance().getUid(),null,"","category",null,0));
         }
         view.setRecyclerMine(recipes);
         view.setRecyclerSaved(recipes);
