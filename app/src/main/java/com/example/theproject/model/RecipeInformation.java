@@ -8,22 +8,51 @@ import java.util.ArrayList;
 
 public class RecipeInformation {
     String name;
+    String userIdOwner;
+    String recipeId;
     ArrayList<Ingredients> ingredientArray;
     String preparation;
     String category;
-    boolean favorite;
-    String ratingbar;
-
     Image image;
+    ArrayList<String> usersId;
 
-    public RecipeInformation(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, boolean favorite, String ratingbar) {
+    public RecipeInformation()
+    {
+        name="";
+        this.preparation = "";
+        this.category = "";
+        this.image = null;
+        usersId=new ArrayList<>();
+        userIdOwner="";
+        recipeId="";
+        this.ingredientArray = new ArrayList<>();
+    }
+    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Image image) {
+        super();
         this.name = name;
         this.ingredientArray = ingredientArray;
         this.preparation = preparation;
         this.category = category;
-        this.favorite = favorite;
-        this.ratingbar = ratingbar;
-        this.image = null;
+        this.image = image;
+        usersId=new ArrayList<>();
+        this.userIdOwner=ownerUserId;
+        this.recipeId=recipeId;
+    }
+
+    public String getUserIdOwner() {
+        return userIdOwner;
+    }
+
+    public void setUserIdOwner(String userIdOwner) {
+        this.userIdOwner = userIdOwner;
+    }
+
+    public ArrayList<String> getUsersId() {
+        return usersId;
+    }
+
+    public void setUsersId(ArrayList<String> usersId) {
+        this.usersId = usersId;
     }
 
     public ArrayList<Ingredients> getIngredientArray() {

@@ -62,11 +62,12 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/addPhotos"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_button"
+                    android:onClick="addPhoto"
                     android:text="add photo"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -198,12 +199,6 @@
                 android:text="submit"
                 android:textColor="@color/white"
                 android:textStyle="normal" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
 
         </LinearLayout>
     </ScrollView>

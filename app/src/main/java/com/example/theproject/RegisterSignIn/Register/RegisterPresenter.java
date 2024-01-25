@@ -37,7 +37,7 @@ public class RegisterPresenter {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                DatabaseReference myRef = database.getReference("users/").push();
+                                DatabaseReference myRef = database.getReference("users/"+FirebaseAuth.getInstance().getUid());
 
                                 User user=new User(name,email,phone,password,FirebaseAuth.getInstance().getUid());
                                 myRef.setValue(user);
@@ -46,7 +46,7 @@ public class RegisterPresenter {
                             }
 
                             else {
-                                Toast.makeText(view,"Sign In failed",Toast.LENGTH_LONG).show();
+                                Toast.makeText(view,"Register failed",Toast.LENGTH_LONG).show();
 
                             }
                         }

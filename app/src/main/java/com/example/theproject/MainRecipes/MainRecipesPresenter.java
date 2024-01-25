@@ -12,21 +12,21 @@ public MainRecipesPresenter(MainRecipesActivity view)
     ArrayList<RecipeInformation> recipes=new ArrayList<>(30);
     for (int i=0; i<30;i++)
     {
-        recipes.add(new RecipeInformation("b+i",null,"z","best",true,"4"));
+        recipes.add(new RecipeInformation("b+i",null,"z","best",null));
     }
     view.setRecyclerBest(recipes);
 
     ArrayList<RecipeInformation> recipesBreakfastLaunch=new ArrayList<>(30);
     for (int i=0; i<30;i++)
     {
-        recipesBreakfastLaunch.add(new RecipeInformation("l"+i,null,"z","lunch",true,"4"));
+        recipesBreakfastLaunch.add(new RecipeInformation("l"+i,null,"z","lunch",null));
     }
     view.setRecyclerBreakfastLunch(recipesBreakfastLaunch);
 
     ArrayList<RecipeInformation> recipesSweets=new ArrayList<>(30);
     for (int i=0; i<30;i++)
     {
-        recipesSweets.add(new RecipeInformation("s"+i,null,"z","sweets",true,"4"));
+        recipesSweets.add(new RecipeInformation("s"+i,null,"z","sweets",null));
     }
     view.setRecyclerSweets(recipesSweets);
 }

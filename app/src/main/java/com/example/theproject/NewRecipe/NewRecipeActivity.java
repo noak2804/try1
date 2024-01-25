@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,8 +35,11 @@ TextView nameRecipe;
 Button deleteButton;
 TextView unit;
 EditText amount;
+ArrayList<Ingredients> ingredients;
     LinearLayout layout_ingredients;
     NewRecipePresenter presenter;
+    private final int GALLERY_REQ_CODE = 1000;
+    ImageView imgCamera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +47,7 @@ EditText amount;
         presenter=new NewRecipePresenter(this);
         deleteButton=findViewById(R.id.delete_button);
         layout_ingredients=findViewById(R.id.ingerdientLayoutRecipe);
-
+        ArrayList<Ingredients> ingredients=new ArrayList<Ingredients>(ingredientArray.size());
 
     }
 
@@ -56,8 +60,6 @@ EditText amount;
     }
 
     public void submitNewRecipe(View view) {
-        RecipeInformation recipeInformation;
-        recipeInformation=new RecipeInformation("s",null,"k","breakfast",true,"4");
 
         for(int i=0;i<ingredientArray.size();i++)
         {
@@ -67,9 +69,10 @@ EditText amount;
             amount=v.findViewById(R.id.amount);
             int a=Integer.parseInt(amount.getText().toString());
            Ingredients temp=new Ingredients(nameRecipe.toString(),a,unit.toString());
-           recipeInformation.addIng(temp);
+           ingredients.add(temp);
         }
 
+presenter.CreateNewRecipeClicked(nameRecipe,ingredients,);
     }
 
     public void delete_button(View view) {
@@ -140,5 +143,9 @@ EditText amount;
             presenter.ToLogOut();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addPhoto(View view) {
+
     }
 }

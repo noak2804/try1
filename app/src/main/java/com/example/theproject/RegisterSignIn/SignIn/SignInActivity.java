@@ -20,6 +20,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
         presenter=new SignInPresenter(this);
     }
+
     public void navigatetoMainRecipes()
     {
         Intent intent=new Intent(this, MainRecipesActivity.class);
