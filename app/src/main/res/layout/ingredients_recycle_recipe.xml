@@ -10,17 +10,18 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toEndOf="@+id/nameIngred"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.509" />
+        app:layout_constraintVertical_bias="0.62" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameIngred"
+        android:id="@+id/textInputLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="170dp"
@@ -39,41 +40,49 @@
         android:id="@+id/unit"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/amount"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.507" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="130dp"
-        android:text="amount"
+        android:layout_marginTop="10dp"
+        android:text="unit"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/amount"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="unit"
+        android:layout_marginTop="10dp"
+        android:text="amount"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/unit"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.789"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="name"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/nameIngred"

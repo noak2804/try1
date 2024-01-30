@@ -1,10 +1,14 @@
 package com.example.theproject.NewRecipe;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.theproject.MainRecipes.MainRecipesActivity;
+import com.example.theproject.Recipe.RecipeActivity;
 import com.example.theproject.model.Ingredients;
 import com.example.theproject.model.RecipeInformation;
 import com.example.theproject.model.User;
@@ -33,15 +37,13 @@ public class NewRecipePresenter {
     public void ToGroceryList(){view.navigatetoGroceryList();}
     public void ToMainRecipes(){view.navigatetoMainRecipes();}
     public void ToLogOut(){view.logout();}
-    public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, Image image,Integer cookTime)
+    public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, Bitmap image, Integer cookTime)
     {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("recipes/").push();
 
         RecipeInformation recipe=new RecipeInformation( myRef.getKey(),name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,cookTime);
         myRef.setValue(recipe);
-
-
 
     }
 }

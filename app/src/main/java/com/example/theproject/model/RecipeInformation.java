@@ -1,5 +1,6 @@
 package com.example.theproject.model;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 
 import com.example.theproject.model.Ingredients;
@@ -13,7 +14,7 @@ public class RecipeInformation {
     ArrayList<Ingredients> ingredientArray;
     String preparation;
     String category;
-    Image image;
+    Bitmap image;
     ArrayList<String> usersId;
 Integer cookTime;
     public RecipeInformation()
@@ -27,8 +28,9 @@ Integer cookTime;
         recipeId="";
         this.ingredientArray = new ArrayList<>();
         cookTime=null;
+
     }
-    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Image image, Integer cookTime) {
+    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Bitmap image, Integer cookTime) {
         super();
         this.name = name;
         this.ingredientArray = ingredientArray;
@@ -39,6 +41,10 @@ Integer cookTime;
         this.userIdOwner=ownerUserId;
         this.recipeId=recipeId;
        this.cookTime=cookTime;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 
     public String getRecipeId() {
@@ -110,11 +116,5 @@ Integer cookTime;
     }
 
 
-    public Image getImage() {
-        return image;
-    }
 
-    public void setImage(Image image) {
-        this.image = image;
-    }
 }
