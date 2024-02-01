@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 
 import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.Recipe.RecipeActivity;
+import com.example.theproject.Repository;
 import com.example.theproject.model.Ingredients;
 import com.example.theproject.model.RecipeInformation;
 import com.example.theproject.model.User;
@@ -39,11 +40,8 @@ public class NewRecipePresenter {
     public void ToLogOut(){view.logout();}
     public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, Bitmap image, Integer cookTime)
     {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("recipes/").push();
-
-        RecipeInformation recipe=new RecipeInformation( myRef.getKey(),name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,cookTime);
-        myRef.setValue(recipe);
+        RecipeInformation recipe=new RecipeInformation( "",name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,cookTime);
+        Repository.getInstance().createRecipe(recipe);
 
     }
 }

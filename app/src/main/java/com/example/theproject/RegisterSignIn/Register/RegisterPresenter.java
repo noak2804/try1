@@ -10,6 +10,7 @@ import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.R;
 import com.example.theproject.Recipe.RecipeActivity;
 import com.example.theproject.RegisterSignIn.Register.RegisterActivity;
+import com.example.theproject.Repository;
 import com.example.theproject.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,11 +37,9 @@ public class RegisterPresenter {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                DatabaseReference myRef = database.getReference("users/"+FirebaseAuth.getInstance().getUid());
-
                                 User user=new User(name,email,phone,password,FirebaseAuth.getInstance().getUid());
-                                myRef.setValue(user);
+                                Repository.getInstance().addUser(user);
+
                                 view.navigatetoMainRecipes();
 
                             }

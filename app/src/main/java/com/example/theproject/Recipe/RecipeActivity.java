@@ -75,6 +75,7 @@ RecipePresenter presenter;
                 ratingbar=(RatingBar)findViewById(R.id.ratingStars);
 
                 String rating=String.valueOf(ratingbar.getRating());
+
                 Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
             }
         });

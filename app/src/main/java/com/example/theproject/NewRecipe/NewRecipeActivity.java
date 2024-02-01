@@ -53,6 +53,7 @@ public class NewRecipeActivity extends AppCompatActivity {
     Integer cookTime;
     RadioGroup radioCategory;
     RadioButton radioCategorySelected;
+    Button addphoto;
 
 Bitmap image;
 
@@ -85,22 +86,25 @@ Bitmap image;
 
     }
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-       if(resultCode==RESULT_OK)
-       {
-           Uri temp=data.getData();
-           Bitmap bitmap=null;
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Uri temp = data.getData();
+            Bitmap bitmap = null;
 
-               try {
-                   bitmap= MediaStore.Images.Media.getBitmap(this.getContentResolver(),temp);
-                   image=bitmap;
-               } catch (IOException e) {
-                   throw new RuntimeException(e);
-               }
-                ImageView imageView=
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), temp);
+                image = bitmap;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ImageView imageView = findViewById(R.id.imageView);
+            imageView.setImageBitmap(image);
+            imageView.setVisibility(View.VISIBLE);
+            addphoto = findViewById(R.id.addPhotos);
+            addphoto.setVisibility(View.GONE);
 
-       }
+        }
     }
     public void addIngredients(View view) {
 

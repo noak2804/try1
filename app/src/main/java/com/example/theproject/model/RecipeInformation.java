@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class RecipeInformation {
     String name;
+    ArrayList<Integer> rateArray;
+    Integer averageRating;
     String userIdOwner;
     String recipeId;
     ArrayList<Ingredients> ingredientArray;
