@@ -18,7 +18,7 @@ public class RecipeInformation {
     String category;
     Bitmap image;
     ArrayList<String> usersId;
-Integer cookTime;
+    Integer cookTime;
     public RecipeInformation()
     {
         name="";

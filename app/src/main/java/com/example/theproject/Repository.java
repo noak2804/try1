@@ -24,6 +24,12 @@ public class Repository {
                 DatabaseReference myRef = database.getReference("users/"+ FirebaseAuth.getInstance().getUid());
                 myRef.setValue(user);
         }
+        public void updateUser(User user)
+        {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("users/"+user.getId());
+                myRef.setValue(user);
+        }
         public void createRecipe(RecipeInformation recipe)
         {
                 if(recipe.getRecipeId().equals(""))

@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
@@ -22,16 +23,26 @@ import com.example.theproject.R;
 import com.example.theproject.GroceryList.GroceryListActivity;
 import com.example.theproject.RegisterSignIn.Home.MainActivity;
 import com.example.theproject.UserProfile.UserProfileActivity;
+import com.example.theproject.model.RecipeInformation;
+import com.example.theproject.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RecipeActivity extends AppCompatActivity {
 RecipePresenter presenter;
     TextView nameTextView,ingredients,preparation,type;
     public int counter;
+    RecipeInformation recipe;
     Button timer;
     TextView time;
     RatingBar ratingbar;
     Button submitButton;
+    String recipeId;
+    String userId;
+    User user;
+    Button saveRecipe;
+    Button groceryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +57,21 @@ RecipePresenter presenter;
         preparation.setText("first");
         type = findViewById(R.id.type);
         type.setText("lunch");
+        saveRecipe=(Button) findViewById(R.id.saveRecipe);
+        groceryList=(Button) findViewById(R.id.addgroceryList);
 
+saveRecipe.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        saveRecipe.setBackgroundResource(R.drawable.border_text);
+    }
+});
+groceryList.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        groceryList.setBackgroundResource(R.drawable.border_text);
+    }
+});
 
 
         timer= (Button) findViewById(R.id.timer);
@@ -79,6 +104,10 @@ RecipePresenter presenter;
                 Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
             }
         });
+    }
+    public void saveRecipe(View view) {
+
+
     }
     public void navigatetoMainRecipes()
     {
@@ -119,7 +148,6 @@ RecipePresenter presenter;
         return true;
 
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -146,4 +174,6 @@ RecipePresenter presenter;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
