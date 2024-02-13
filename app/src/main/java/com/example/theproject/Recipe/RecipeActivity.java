@@ -22,6 +22,7 @@ import com.example.theproject.NewRecipe.NewRecipeActivity;
 import com.example.theproject.R;
 import com.example.theproject.GroceryList.GroceryListActivity;
 import com.example.theproject.RegisterSignIn.Home.MainActivity;
+import com.example.theproject.Repository;
 import com.example.theproject.UserProfile.UserProfileActivity;
 import com.example.theproject.model.RecipeInformation;
 import com.example.theproject.model.User;
@@ -29,7 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RecipeActivity extends AppCompatActivity {
+public class RecipeActivity extends AppCompatActivity implements Repository.LoadUserListener {
 RecipePresenter presenter;
     TextView nameTextView,ingredients,preparation,type;
     public int counter;
@@ -176,4 +177,8 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     }
 
 
+    @Override
+    public void updateUser(User user) {
+
+    }
 }

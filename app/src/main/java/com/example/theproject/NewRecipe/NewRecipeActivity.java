@@ -26,9 +26,11 @@ import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.R;
 import com.example.theproject.Recipe.RecipeActivity;
 import com.example.theproject.RegisterSignIn.Home.MainActivity;
+import com.example.theproject.Repository;
 import com.example.theproject.UserProfile.UserProfileActivity;
 import com.example.theproject.model.Ingredients;
 import com.example.theproject.model.RecipeInformation;
+import com.example.theproject.model.User;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -37,7 +39,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class NewRecipeActivity extends AppCompatActivity {
+public class NewRecipeActivity extends AppCompatActivity  {
     ArrayList <View>ingredientArray =new ArrayList<View>();
     String nameRecipe;
     Button deleteButton;
@@ -55,10 +57,10 @@ public class NewRecipeActivity extends AppCompatActivity {
     RadioButton radioCategorySelected;
     Button addphoto;
 
+
 Bitmap image;
 
-    private final int GALLERY_REQ_CODE = 1000;
-    ImageView imgCamera;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -210,6 +212,7 @@ Bitmap image;
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 
 }
