@@ -3,6 +3,7 @@ package com.example.theproject.UserProfile;
 import com.example.theproject.Repository;
 import com.example.theproject.model.RecipeInformation;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -26,7 +27,11 @@ public class UserProfilePresenter implements Repository.LoadRecipesListener{
         for (int i = 0; i < recipes.size(); i++)
         {
             RecipeInformation recipe =  recipes.get(i);
-            recipesMine.add(recipe);
+
+            if(recipe.getUsersId().equals(FirebaseAuth.getInstance().getUid()))
+            {
+                recipesMine.add(recipe);
+            }
             recipesSaved.add(recipe);
         }
         view.setRecyclerSaved(recipesSaved);
