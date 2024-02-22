@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class RecipeInformation {
     String name;
-    ArrayList<Integer> rateArray;
+
     Integer averageRating;
     String userIdOwner;
     String recipeId;
@@ -30,9 +30,9 @@ public class RecipeInformation {
         recipeId="";
         this.ingredientArray = new ArrayList<>();
         cookTime=null;
-
+        averageRating=null;
     }
-    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Bitmap image, Integer cookTime) {
+    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Bitmap image, Integer cookTime,Integer averageRating) {
         super();
         this.name = name;
         this.ingredientArray = ingredientArray;
@@ -43,6 +43,15 @@ public class RecipeInformation {
         this.userIdOwner=ownerUserId;
         this.recipeId=recipeId;
        this.cookTime=cookTime;
+       this.averageRating=averageRating;
+    }
+
+    public Integer getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(Integer averageRating) {
+        this.averageRating = averageRating;
     }
 
     public void setImage(Bitmap image) {

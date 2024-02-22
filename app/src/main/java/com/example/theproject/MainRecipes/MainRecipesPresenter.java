@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class MainRecipesPresenter implements Repository.LoadRecipesListener{
     MainRecipesActivity view;
+    int max=0;
 public MainRecipesPresenter(MainRecipesActivity view)
 {
     this.view=view;
@@ -49,14 +50,40 @@ public MainRecipesPresenter(MainRecipesActivity view)
         ArrayList<RecipeInformation> recipesSweets=new ArrayList<>();
         ArrayList<RecipeInformation> recipesBreakfastLaunch=new ArrayList<>();
         ArrayList<RecipeInformation> recipesBest=new ArrayList<>();
+        ArrayList<RecipeInformation> recipes2=new ArrayList<>();
+
+        if (recipes.size() == 0)
+        {
+
+        }
+        else {
+        for (int i = 0; i < recipes.size(); i++)
+        {
+            RecipeInformation recipe =  recipes.get(i);
+            recipes2.add(recipe);
+        }
+
+
+        RecipeInformation recipebest=recipes.get(0);;
+        for (int k=0; k<recipes.size();k++) {
+            int c=0;
+            for (int i = 0; i < recipes2.size(); i++) {
+                 recipebest = recipes2.get(i);
+                if (recipebest.getAverageRating() > max) {
+                    max = recipebest.getAverageRating();
+                }
+                c++;
+            }
+            recipesBest.add(recipebest);
+            recipes2.remove(c-1);
+        }
+        view.setRecyclerBest(recipesBest);
+
         for (int i=0; i<recipes.size();i++)
         {
             RecipeInformation recipe =  recipes.get(i);
-            if(rating)
-            {
-                recipesBest.add(recipe);
-            }
-           else if(recipe.getCategory().equals("lunch")||recipe.getCategory().equals("breakfast"))
+
+            if(recipe.getCategory().equals("lunch")||recipe.getCategory().equals("breakfast"))
             {
                 recipesBreakfastLaunch.add(recipe);
             }
@@ -65,6 +92,8 @@ public MainRecipesPresenter(MainRecipesActivity view)
                 recipesSweets.add(recipe);
             }
         }
-        view.setRecyclerBest(recipes);
+        view.setRecyclerSweets(recipesSweets);
+        view.setRecyclerBreakfastLunch(recipesBreakfastLaunch);
     }
+}
 }

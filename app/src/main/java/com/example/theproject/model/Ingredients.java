@@ -11,6 +11,10 @@ public class Ingredients {
         this.unit = unit;
     }
 
+    public Ingredients(){
+        super();
+    }
+
     public String getUnit() {
         return unit;
     }

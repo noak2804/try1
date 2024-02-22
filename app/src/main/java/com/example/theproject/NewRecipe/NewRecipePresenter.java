@@ -40,7 +40,7 @@ public class NewRecipePresenter {
     public void ToLogOut(){view.logout();}
     public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, Bitmap image, Integer cookTime)
     {
-        RecipeInformation recipe=new RecipeInformation( "",name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,cookTime);
+        RecipeInformation recipe=new RecipeInformation( "",name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,cookTime,0);
         Repository.getInstance().createRecipe(recipe);
 
     }

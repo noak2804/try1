@@ -71,6 +71,10 @@ Bitmap image;
         layout_ingredients=findViewById(R.id.ingerdientLayoutRecipe);
         ArrayList<Ingredients> ingredients=new ArrayList<Ingredients>(ingredientArray.size());
 
+        textView=findViewById(R.id.name);
+        nameRecipe=textView.getText().toString();
+
+
         textView=findViewById(R.id.preparation);
         preparation=textView.getText().toString();
 
@@ -122,7 +126,7 @@ Bitmap image;
         {
             View v =  ingredientArray.get(i);
             TextInputEditText Ingredient =v.findViewById(R.id.nameIngred);
-            nameRecipe=textView.getText().toString();
+
             unit=v.findViewById(R.id.unit);
             amount=v.findViewById(R.id.amount);
             int a=Integer.parseInt(amount.getText().toString());
