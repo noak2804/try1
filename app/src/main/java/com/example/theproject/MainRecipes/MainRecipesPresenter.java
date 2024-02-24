@@ -64,17 +64,21 @@ public MainRecipesPresenter(MainRecipesActivity view)
         }
 
 
-        RecipeInformation recipebest=recipes.get(0);;
+        RecipeInformation recipebest=recipes.get(0);
+            RecipeInformation recipeb=new RecipeInformation();
         for (int k=0; k<recipes.size();k++) {
             int c=0;
+            max=0;
             for (int i = 0; i < recipes2.size(); i++) {
                  recipebest = recipes2.get(i);
                 if (recipebest.getAverageRating() > max) {
                     max = recipebest.getAverageRating();
+                    recipeb=recipebest;
+                    c++;
                 }
-                c++;
+
             }
-            recipesBest.add(recipebest);
+            recipesBest.add(recipeb);
             recipes2.remove(c-1);
         }
         view.setRecyclerBest(recipesBest);

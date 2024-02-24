@@ -28,7 +28,7 @@ public class UserProfilePresenter implements Repository.LoadRecipesListener{
         {
             RecipeInformation recipe =  recipes.get(i);
 
-            if(recipe.getUsersId().equals(FirebaseAuth.getInstance().getUid()))
+            if(recipe.getUserIdOwner().equals(FirebaseAuth.getInstance().getUid()))
             {
                 recipesMine.add(recipe);
             }
