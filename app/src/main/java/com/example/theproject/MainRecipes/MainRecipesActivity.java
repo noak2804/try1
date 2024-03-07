@@ -114,6 +114,7 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
     @Override
     public void recipeClick(RecipeInformation recipe) {
         Intent intent = new Intent(this,RecipeActivity.class);
+        intent.putExtra("recipeId",recipe.getRecipeId());
         startActivity(intent);
     }
 

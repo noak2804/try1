@@ -24,15 +24,21 @@ import com.example.theproject.GroceryList.GroceryListActivity;
 import com.example.theproject.RegisterSignIn.Home.MainActivity;
 import com.example.theproject.Repository;
 import com.example.theproject.UserProfile.UserProfileActivity;
+import com.example.theproject.model.Ingredients;
 import com.example.theproject.model.RecipeInformation;
 import com.example.theproject.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class RecipeActivity extends AppCompatActivity implements Repository.LoadUserListener {
 RecipePresenter presenter;
-    TextView nameTextView,ingredients,preparation,type;
+    TextView nameTextView,preparation,type;
+
+    ArrayList<Ingredients> ingredientArray;
+    TextView ingredients;
     public int counter;
     RecipeInformation recipe;
     Button timer;
@@ -50,14 +56,7 @@ RecipePresenter presenter;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
         presenter=new RecipePresenter(this);
-        nameTextView = findViewById(R.id.nameRecipe);
-        nameTextView.setText("name");
-        ingredients = findViewById(R.id.ingredients);
-        ingredients.setText("something");
-        preparation = findViewById(R.id.preparationRecipe);
-        preparation.setText("first");
-        type = findViewById(R.id.type);
-        type.setText("lunch");
+
         saveRecipe=(Button) findViewById(R.id.saveRecipe);
         groceryList=(Button) findViewById(R.id.addgroceryList);
 
@@ -75,23 +74,7 @@ groceryList.setOnClickListener(new View.OnClickListener() {
 });
 
 
-        timer= (Button) findViewById(R.id.timer);
-        time= (TextView) findViewById(R.id.time);
-        timer.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                new CountDownTimer(1000, 1000){
-                    public void onTick(long millisUntilFinished){
-                        time.setText(String.valueOf(counter));
-                        counter++;
-                    }
-                    public  void onFinish(){
-                        time.setText("FINISH!!");
-                    }
-                }.start();
-            }
-        });
+
 
 
         submitButton = (Button) findViewById(R.id.sendRatingStars);
@@ -109,6 +92,43 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     public void saveRecipe(View view) {
 
 
+    }
+    public void setUi(RecipeInformation recipe){
+        String s="";
+        nameTextView = findViewById(R.id.nameRecipe);
+        nameTextView.setText(recipe.getName());
+       ingredients=findViewById(R.id.ingredients);
+       ingredientArray=recipe.getIngredientArray();
+       for(int i=0;i<ingredientArray.size();i++)
+       {
+            s+=ingredientArray.get(i).getIngredients()+" "+ingredientArray.get(i).getAmount()+" "+ingredientArray.get(i).getUnit()+"\n";
+
+       }
+       ingredients.setText(s);
+        preparation = findViewById(R.id.preparationRecipe);
+        preparation.setText(recipe.getPreparation());
+        type = findViewById(R.id.type);
+        type.setText(recipe.getCategory());
+
+        counter=recipe.getCookTime();
+        timer= (Button) findViewById(R.id.timer);
+        time= (TextView) findViewById(R.id.time);
+        timer.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                new CountDownTimer(0, 1000){
+                    public void onTick(long millisUntilFinished){
+
+                        time.setText(String.valueOf(counter));
+                        counter--;
+                    }
+                    public  void onFinish(){
+                        time.setText("FINISH!!");
+                    }
+                }.start();
+            }
+        });
     }
     public void navigatetoMainRecipes()
     {

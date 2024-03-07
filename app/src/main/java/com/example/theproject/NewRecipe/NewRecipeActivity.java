@@ -41,7 +41,7 @@ import java.util.TimerTask;
 
 public class NewRecipeActivity extends AppCompatActivity  {
     ArrayList <View>ingredientArray =new ArrayList<View>();
-    String nameRecipe;
+    EditText nameRecipe;
     Button deleteButton;
     EditText unit;
     EditText amount;
@@ -50,7 +50,7 @@ public class NewRecipeActivity extends AppCompatActivity  {
     NewRecipePresenter presenter;
     TextView textView;
 
-    String preparation;
+    EditText preparation;
     String category;
     Integer cookTime;
     RadioGroup radioCategory;
@@ -71,12 +71,12 @@ Bitmap image;
         layout_ingredients=findViewById(R.id.ingerdientLayoutRecipe);
         ArrayList<Ingredients> ingredients=new ArrayList<Ingredients>(ingredientArray.size());
 
-        textView=findViewById(R.id.name);
-        nameRecipe=textView.getText().toString();
+
+        nameRecipe=findViewById(R.id.name);
 
 
-        textView=findViewById(R.id.preparation);
-        preparation=textView.getText().toString();
+
+        preparation=findViewById(R.id.preparation);
 
         Button btnGallery = findViewById(R.id.addPhotos);
 
@@ -130,7 +130,7 @@ Bitmap image;
             unit=v.findViewById(R.id.unit);
             amount=v.findViewById(R.id.amount);
             int a=Integer.parseInt(amount.getText().toString());
-            Ingredients temp=new Ingredients(nameRecipe.toString(),a,unit.toString());
+            Ingredients temp=new Ingredients(nameRecipe.getText().toString(),a,unit.getText().toString());
             ingredients.add(temp);
         }
         textView=findViewById(R.id.cook_time);
@@ -142,7 +142,7 @@ Bitmap image;
              radioCategorySelected=(RadioButton) findViewById(selectedId);
             category= radioCategorySelected.getText().toString();
 
-        presenter.CreateNewRecipeClicked(nameRecipe,ingredients,preparation,category,null,cookTime);
+        presenter.CreateNewRecipeClicked(nameRecipe.getText().toString(),ingredients,preparation.getText().toString(),category,null,cookTime);
         Intent intent=new Intent(this, RecipeActivity.class);
         startActivity(intent);
     }

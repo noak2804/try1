@@ -45,6 +45,7 @@ public MainRecipesPresenter(MainRecipesActivity view)
     public void ToMainRecipes(){view.navigatetoMainRecipes();}
     public void ToLogOut(){view.logout();}
 
+
     @Override
     public void updateRecipes(ArrayList<RecipeInformation> recipes) {
         ArrayList<RecipeInformation> recipesSweets=new ArrayList<>();
@@ -57,6 +58,23 @@ public MainRecipesPresenter(MainRecipesActivity view)
 
         }
         else {
+
+            for (int i=0; i<recipes.size();i++)
+            {
+                RecipeInformation recipe =  recipes.get(i);
+
+                if(recipe.getCategory().equals("lunch")||recipe.getCategory().equals("breakfast"))
+                {
+                    recipesBreakfastLaunch.add(recipe);
+                }
+
+                else if (recipe.getCategory().equals("sweets")) {
+                    recipesSweets.add(recipe);
+                }
+            }
+            view.setRecyclerSweets(recipesSweets);
+            view.setRecyclerBreakfastLunch(recipesBreakfastLaunch);
+
         for (int i = 0; i < recipes.size(); i++)
         {
             RecipeInformation recipe =  recipes.get(i);
@@ -64,40 +82,28 @@ public MainRecipesPresenter(MainRecipesActivity view)
         }
 
 
-        RecipeInformation recipebest=recipes.get(0);
-            RecipeInformation recipeb=new RecipeInformation();
+
+
         for (int k=0; k<recipes.size();k++) {
+            RecipeInformation recipebest = recipes2.get(0);
             int c=0;
             max=0;
             for (int i = 0; i < recipes2.size(); i++) {
-                 recipebest = recipes2.get(i);
-                if (recipebest.getAverageRating() > max) {
-                    max = recipebest.getAverageRating();
-                    recipeb=recipebest;
-                    c++;
+                 RecipeInformation currentRec = recipes2.get(i);
+                if (currentRec.getAverageRating() >= max) {
+                    max = currentRec.getAverageRating();
+                    recipebest=currentRec;
+                    c = i;
                 }
 
             }
-            recipesBest.add(recipeb);
-            recipes2.remove(c-1);
+            recipesBest.add(recipebest);
+            recipes2.remove(c);
+
         }
         view.setRecyclerBest(recipesBest);
 
-        for (int i=0; i<recipes.size();i++)
-        {
-            RecipeInformation recipe =  recipes.get(i);
 
-            if(recipe.getCategory().equals("lunch")||recipe.getCategory().equals("breakfast"))
-            {
-                recipesBreakfastLaunch.add(recipe);
-            }
-
-            else if (recipe.getCategory().equals("sweets")) {
-                recipesSweets.add(recipe);
-            }
-        }
-        view.setRecyclerSweets(recipesSweets);
-        view.setRecyclerBreakfastLunch(recipesBreakfastLaunch);
     }
 }
 }
