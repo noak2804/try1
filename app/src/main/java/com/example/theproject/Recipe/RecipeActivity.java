@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,11 +33,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class RecipeActivity extends AppCompatActivity implements Repository.LoadUserListener {
 RecipePresenter presenter;
     TextView nameTextView,preparation,type;
-
+    private final int interval = 1000; // 1 Second
+    private Handler handler = new Handler();
+    private Runnable runnable;
     ArrayList<Ingredients> ingredientArray;
     TextView ingredients;
     public int counter;
@@ -112,23 +117,23 @@ groceryList.setOnClickListener(new View.OnClickListener() {
 
         counter=recipe.getCookTime();
         timer= (Button) findViewById(R.id.timer);
+
         time= (TextView) findViewById(R.id.time);
+
         timer.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
-                new CountDownTimer(0, 1000){
-                    public void onTick(long millisUntilFinished){
-
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
                         time.setText(String.valueOf(counter));
                         counter--;
                     }
-                    public  void onFinish(){
-                        time.setText("FINISH!!");
-                    }
-                }.start();
+                }, 1000,1000);
             }
         });
+
     }
     public void navigatetoMainRecipes()
     {
