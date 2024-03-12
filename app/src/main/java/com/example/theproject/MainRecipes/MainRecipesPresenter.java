@@ -23,18 +23,8 @@ public MainRecipesPresenter(MainRecipesActivity view)
     view.setRecyclerBreakfastLunch(recipes);
 
 
-    /*for (int i=0; i<30;i++)
-    {
-        recipesBreakfastLaunch.add(new RecipeInformation(null,"l"+1, FirebaseAuth.getInstance().getUid(),null,"","category",null,0));
-    }
-    view.setRecyclerBreakfastLunch(recipesBreakfastLaunch);
 
-    ArrayList<RecipeInformation> recipesSweets=new ArrayList<>(30);
-    for (int i=0; i<30;i++)
-    {
-        recipesSweets.add(new RecipeInformation(null,"s"+1, FirebaseAuth.getInstance().getUid(),null,"","category",null,0));
-    }
-    view.setRecyclerSweets(recipesSweets);*/
+
 }
     public void ToCreateNewRecipeClicked()
     {

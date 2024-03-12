@@ -12,7 +12,7 @@ public class User {
     String password;
     String id;
 
-    ArrayList<RecipeActivity> savedRecipes;
+    ArrayList<String> savedRecipes;
 
 
    public User(){
@@ -21,18 +21,20 @@ public class User {
        phone=null;
        password="";
        id="";
-       this.savedRecipes = new ArrayList<RecipeActivity>();
+       this.savedRecipes = new ArrayList<String>();
    }
 
 
-    public User(String name, String email, Integer phone, String password,String id) {
+    public User(String name, String email, Integer phone, String password,String id, ArrayList<String> savedRecipes) {
        super();
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.id=id;
+        this.savedRecipes=savedRecipes;
     }
+
 
     public String getName() {
         return name;
@@ -74,11 +76,11 @@ public class User {
         this.id = id;
     }
 
-    public ArrayList<RecipeActivity> getSavedRecipes() {
+    public ArrayList<String> getSavedRecipes() {
         return savedRecipes;
     }
 
-    public void setSavedRecipes(ArrayList<RecipeActivity> savedRecipes) {
+    public void setSavedRecipes(ArrayList<String> savedRecipes) {
         this.savedRecipes = savedRecipes;
     }
 

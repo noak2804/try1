@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +37,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class RecipeActivity extends AppCompatActivity implements Repository.LoadUserListener {
+public class RecipeActivity extends AppCompatActivity {
 RecipePresenter presenter;
     TextView nameTextView,preparation,type;
     private final int interval = 1000; // 1 Second
@@ -62,15 +63,9 @@ RecipePresenter presenter;
         setContentView(R.layout.activity_recipe);
         presenter=new RecipePresenter(this);
 
-        saveRecipe=(Button) findViewById(R.id.saveRecipe);
         groceryList=(Button) findViewById(R.id.addgroceryList);
 
-saveRecipe.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        saveRecipe.setBackgroundResource(R.drawable.border_text);
-    }
-});
+
 groceryList.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
@@ -94,10 +89,7 @@ groceryList.setOnClickListener(new View.OnClickListener() {
             }
         });
     }
-    public void saveRecipe(View view) {
 
-
-    }
     public void setUi(RecipeInformation recipe){
         String s="";
         nameTextView = findViewById(R.id.nameRecipe);
@@ -118,22 +110,30 @@ groceryList.setOnClickListener(new View.OnClickListener() {
         counter=recipe.getCookTime();
         timer= (Button) findViewById(R.id.timer);
 
-        time= (TextView) findViewById(R.id.time);
+
+
 
         timer.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
-                new Timer().schedule(new TimerTask() {
+                runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        time.setText(String.valueOf(counter));
+                        TextView t = (TextView) findViewById(R.id.time);
+                        t.setText(String.valueOf(counter));
+
                         counter--;
                     }
-                }, 1000,1000);
+                });
             }
         });
 
+
+    }
+    public void TextViewToString(Integer num)
+    {
+        time.setText(String.valueOf(num));
     }
     public void navigatetoMainRecipes()
     {
@@ -202,8 +202,11 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     }
 
 
-    @Override
-    public void updateUser(User user) {
 
+    public void saveRecipe(View view) {
+        ImageView imageView=findViewById(R.id.imageViewSave);
+        imageView.setImageDrawable(getDrawable(R.drawable.saved));
+
+       presenter.SaveRecipe();
     }
 }

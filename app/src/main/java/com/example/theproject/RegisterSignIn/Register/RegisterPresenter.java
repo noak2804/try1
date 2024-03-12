@@ -37,7 +37,7 @@ public class RegisterPresenter {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                User user=new User(name,email,phone,password,FirebaseAuth.getInstance().getUid());
+                                User user=new User(name,email,phone,password,FirebaseAuth.getInstance().getUid(),null);
                                 Repository.getInstance().addUser(user);
 
                                 view.navigatetoMainRecipes();
