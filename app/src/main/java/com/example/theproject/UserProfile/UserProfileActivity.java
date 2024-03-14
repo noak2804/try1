@@ -56,7 +56,7 @@ UserProfilePresenter presenter;
     @Override
     public void recipeClick(RecipeInformation recipe) {
         Intent intent = new Intent(this, RecipeActivity.class);
-        intent.putExtra("name ",recipe.getName());
+        intent.putExtra("recipeId",recipe.getRecipeId());
         startActivity(intent);
     }
 

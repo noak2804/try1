@@ -1,6 +1,7 @@
 package com.example.theproject.Recipe;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.theproject.Repository;
 import com.example.theproject.model.RecipeInformation;
@@ -23,7 +24,25 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
     }
     public void addGroceryListClicked()
     {
-        view.navigatetoGroceryList();
+        if(user.getIngredientArray()==null)
+        {
+            user.setIngredientArray(new ArrayList<>());
+        }
+        Integer c=0;
+        for (int i=0;i<user.getIngredientArray().size();i++)
+        {
+            if(user.getIngredientArray().get(i).equals(recipe.getIngredientArray()))
+            {c=1;}
+
+        }
+        if(c==0) {
+            user.getIngredientArray().add(recipe.getIngredientArray());
+            Repository.getInstance().addUser(user);
+        }
+        else{
+            Toast.makeText(view,"The Ingredients is already saved",Toast.LENGTH_LONG).show();
+
+        }
     }
     public void ToCreateNewRecipeClicked()
     {
@@ -56,9 +75,21 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
         {
             user.setSavedRecipes(new ArrayList<>());
         }
-        user.getSavedRecipes().add(idRecipe);
-        Repository.getInstance().addUser(user);
+        Integer c=0;
+        for (int i=0;i<user.getSavedRecipes().size();i++)
+        {
+            if(user.getSavedRecipes().get(i).equals(idRecipe))
+            {c=1;}
 
+        }
+        if(c==0) {
+            user.getSavedRecipes().add(idRecipe);
+            Repository.getInstance().addUser(user);
+        }
+        else{
+            Toast.makeText(view,"The recipe is already saved",Toast.LENGTH_LONG).show();
+
+        }
 
     }
 

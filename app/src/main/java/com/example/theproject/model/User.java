@@ -11,6 +11,7 @@ public class User {
     Integer phone;
     String password;
     String id;
+    ArrayList< ArrayList<Ingredients>> ingredientArray;
 
     ArrayList<String> savedRecipes;
 
@@ -22,10 +23,11 @@ public class User {
        password="";
        id="";
        this.savedRecipes = new ArrayList<String>();
+       this.ingredientArray=new ArrayList<>();
    }
 
 
-    public User(String name, String email, Integer phone, String password,String id, ArrayList<String> savedRecipes) {
+    public User(String name, String email, Integer phone, String password,String id, ArrayList<String> savedRecipes, ArrayList< ArrayList<Ingredients>> ingredientArray) {
        super();
         this.name = name;
         this.email = email;
@@ -33,8 +35,16 @@ public class User {
         this.password = password;
         this.id=id;
         this.savedRecipes=savedRecipes;
+        this.ingredientArray=ingredientArray;
     }
 
+    public ArrayList<ArrayList<Ingredients>> getIngredientArray() {
+        return ingredientArray;
+    }
+
+    public void setIngredientArray(ArrayList<ArrayList<Ingredients>> ingredientArray) {
+        this.ingredientArray = ingredientArray;
+    }
 
     public String getName() {
         return name;

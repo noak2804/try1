@@ -70,6 +70,7 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         groceryList.setBackgroundResource(R.drawable.border_text);
+        presenter.addGroceryListClicked();
     }
 });
 
@@ -91,11 +92,12 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     }
 
     public void setUi(RecipeInformation recipe){
-        String s="";
+
         nameTextView = findViewById(R.id.nameRecipe);
         nameTextView.setText(recipe.getName());
        ingredients=findViewById(R.id.ingredients);
        ingredientArray=recipe.getIngredientArray();
+        String s="";
        for(int i=0;i<ingredientArray.size();i++)
        {
             s+=ingredientArray.get(i).getIngredients()+" "+ingredientArray.get(i).getAmount()+" "+ingredientArray.get(i).getUnit()+"\n";
@@ -163,9 +165,7 @@ groceryList.setOnClickListener(new View.OnClickListener() {
         Intent intent=new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    public void addGroceryList(View view) {
-        presenter.addGroceryListClicked();
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu_recipe) {
@@ -204,9 +204,10 @@ groceryList.setOnClickListener(new View.OnClickListener() {
 
 
     public void saveRecipe(View view) {
+        presenter.SaveRecipe();
         ImageView imageView=findViewById(R.id.imageViewSave);
         imageView.setImageDrawable(getDrawable(R.drawable.saved));
 
-       presenter.SaveRecipe();
+
     }
 }

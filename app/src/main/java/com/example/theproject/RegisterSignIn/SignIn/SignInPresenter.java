@@ -29,7 +29,7 @@ public class SignInPresenter {
                             view.navigatetoMainRecipes();
                         }
                         else {
-                            Toast .makeText(view,"Registeration failed",Toast.LENGTH_LONG).show();
+                            Toast .makeText(view,"Sign In failed",Toast.LENGTH_LONG).show();
 
                         }
                     }
