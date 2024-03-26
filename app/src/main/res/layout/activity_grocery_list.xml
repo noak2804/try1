@@ -43,7 +43,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:text="ingredients"
-                    android:textSize="16sp" />
+                    android:textSize="34sp" />
             </LinearLayout>
 
         </LinearLayout>

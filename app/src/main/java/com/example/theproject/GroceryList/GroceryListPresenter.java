@@ -4,8 +4,11 @@ import android.widget.TextView;
 
 import com.example.theproject.R;
 import com.example.theproject.Repository;
+import com.example.theproject.model.Ingredients;
 import com.example.theproject.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
 
 public class GroceryListPresenter implements Repository.LoadUserListener{
     GroceryListActivity view;
@@ -18,13 +21,7 @@ public class GroceryListPresenter implements Repository.LoadUserListener{
         Repository.getInstance().readUser( FirebaseAuth.getInstance().getUid());
 
 
-        for(int i=0;i<user.getIngredientArray().size();i++)
-        {
-            for (int k=0; k<user.getIngredientArray().get(i).size();k++) {
-                s +=  user.getIngredientArray().get(i).get(k).getIngredients() + " " + user.getIngredientArray().get(i).get(k).getAmount() + " " + user.getIngredientArray().get(i).get(k).getUnit() + "\n";
-            }
-        }
-        view.setGroceryList(s);
+
     }
 
     public void ToCreateNewRecipeClicked()
@@ -38,6 +35,16 @@ public class GroceryListPresenter implements Repository.LoadUserListener{
     @Override
     public void updateUser(User user) {
         this.user=user;
+        ArrayList<Ingredients> ingredients;
+        for(int i=0;i<user.getIngredientArray().size();i++)
+        {
+            s+=user.getIngredientArray().get(i).getName()+": "+"\n";
+            ingredients = user.getIngredientArray().get(i).getIngredientArray();
+            for (int k=0; k<ingredients.size();k++) {
 
+                s +=  ingredients.get(k).getIngredients() + " " + ingredients.get(k).getAmount() + " " + ingredients.get(k).getUnit() + "\n";
+            }
+        }
+        view.setGroceryList(s);
     }
 }

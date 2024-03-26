@@ -15,6 +15,8 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
     RecipeInformation recipe;
     String idRecipe;
     User user;
+    Boolean ifIngredientsSave=false;
+    Boolean ifRecipeSaved=false;
 
     public RecipePresenter(RecipeActivity view) {
         this.view = view;
@@ -24,25 +26,14 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
     }
     public void addGroceryListClicked()
     {
-        if(user.getIngredientArray()==null)
-        {
-            user.setIngredientArray(new ArrayList<>());
-        }
-        Integer c=0;
-        for (int i=0;i<user.getIngredientArray().size();i++)
-        {
-            if(user.getIngredientArray().get(i).equals(recipe.getIngredientArray()))
-            {c=1;}
 
-        }
-        if(c==0) {
-            user.getIngredientArray().add(recipe.getIngredientArray());
+
+            user.getIngredientArray().add(recipe);
             Repository.getInstance().addUser(user);
-        }
-        else{
-            Toast.makeText(view,"The Ingredients is already saved",Toast.LENGTH_LONG).show();
+            ifIngredientsSave=true;
+        recipe.setIfIngredientsSave(ifIngredientsSave);
+        Repository.getInstance().createRecipe(recipe);
 
-        }
     }
     public void ToCreateNewRecipeClicked()
     {
@@ -56,7 +47,7 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
     @Override
     public void updateRecipes(ArrayList<RecipeInformation> recipes) {
         Bundle b=view.getIntent().getExtras();
-         idRecipe=b.getString("recipeId");
+        idRecipe=b.getString("recipeId");
         if(recipes!=null)
         {
             for (int i=0; i<recipes.size();i++)
@@ -67,7 +58,9 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
                 }
             }
         }
-        view.setUi(recipe);
+
+        view.setUi(recipe,user);
+
     }
     public void SaveRecipe()
     {
@@ -85,6 +78,9 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
         if(c==0) {
             user.getSavedRecipes().add(idRecipe);
             Repository.getInstance().addUser(user);
+            ifRecipeSaved=true;
+            user.setIfSavedRecipes(ifRecipeSaved);
+            Repository.getInstance().updateUser(user);
         }
         else{
             Toast.makeText(view,"The recipe is already saved",Toast.LENGTH_LONG).show();

@@ -52,7 +52,7 @@ public class NewRecipeActivity extends AppCompatActivity  {
 
     EditText preparation;
     String category;
-    Integer cookTime;
+    String cookTime;
     RadioGroup radioCategory;
     RadioButton radioCategorySelected;
     Button addphoto;
@@ -125,26 +125,30 @@ Bitmap image;
         for(int i=0;i<ingredientArray.size();i++)
         {
             View v =  ingredientArray.get(i);
-            TextInputEditText Ingredient =v.findViewById(R.id.nameIngred);
+            TextInputEditText ingredient =v.findViewById(R.id.nameIngred);
 
             unit=v.findViewById(R.id.unit);
             amount=v.findViewById(R.id.amount);
             int a=Integer.parseInt(amount.getText().toString());
-            Ingredients temp=new Ingredients(nameRecipe.getText().toString(),a,unit.getText().toString());
+            Ingredients temp=new Ingredients(ingredient.getText().toString(),a,unit.getText().toString());
             ingredients.add(temp);
         }
         textView=findViewById(R.id.cook_time);
-        cookTime=Integer.parseInt(textView.getText().toString());
+        cookTime=textView.getText().toString();
 
         radioCategory=(RadioGroup) findViewById(R.id.radioButton);
 
              int selectedId=radioCategory.getCheckedRadioButtonId();
              radioCategorySelected=(RadioButton) findViewById(selectedId);
-            category= radioCategorySelected.getText().toString();
+             if(radioCategorySelected==null)
+             {
+                 category=null;
+             }
+             else{
+            category= radioCategorySelected.getText().toString();}
 
         presenter.CreateNewRecipeClicked(nameRecipe.getText().toString(),ingredients,preparation.getText().toString(),category,null,cookTime);
-        Intent intent=new Intent(this, RecipeActivity.class);
-        startActivity(intent);
+
     }
 
     public void delete_button(View view) {

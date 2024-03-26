@@ -11,8 +11,9 @@ public class User {
     Integer phone;
     String password;
     String id;
-    ArrayList< ArrayList<Ingredients>> ingredientArray;
+    ArrayList< RecipeInformation> ingredientArray;
 
+    Boolean ifSavedRecipes;
     ArrayList<String> savedRecipes;
 
 
@@ -24,10 +25,11 @@ public class User {
        id="";
        this.savedRecipes = new ArrayList<String>();
        this.ingredientArray=new ArrayList<>();
+       ifSavedRecipes=false;
    }
 
 
-    public User(String name, String email, Integer phone, String password,String id, ArrayList<String> savedRecipes, ArrayList< ArrayList<Ingredients>> ingredientArray) {
+    public User(String name, String email, Integer phone, String password,String id, ArrayList<String> savedRecipes, ArrayList<RecipeInformation> ingredientArray,Boolean ifSavedRecipes) {
        super();
         this.name = name;
         this.email = email;
@@ -36,13 +38,22 @@ public class User {
         this.id=id;
         this.savedRecipes=savedRecipes;
         this.ingredientArray=ingredientArray;
+        this.ifSavedRecipes=ifSavedRecipes;
     }
 
-    public ArrayList<ArrayList<Ingredients>> getIngredientArray() {
+    public Boolean getIfSavedRecipes() {
+        return ifSavedRecipes;
+    }
+
+    public void setIfSavedRecipes(Boolean ifSavedRecipes) {
+        this.ifSavedRecipes = ifSavedRecipes;
+    }
+
+    public ArrayList<RecipeInformation> getIngredientArray() {
         return ingredientArray;
     }
 
-    public void setIngredientArray(ArrayList<ArrayList<Ingredients>> ingredientArray) {
+    public void setIngredientArray(ArrayList<RecipeInformation> ingredientArray) {
         this.ingredientArray = ingredientArray;
     }
 

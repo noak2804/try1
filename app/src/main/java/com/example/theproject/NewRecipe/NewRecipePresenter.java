@@ -38,10 +38,17 @@ public class NewRecipePresenter {
     public void ToGroceryList(){view.navigatetoGroceryList();}
     public void ToMainRecipes(){view.navigatetoMainRecipes();}
     public void ToLogOut(){view.logout();}
-    public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, Bitmap image, Integer cookTime)
+    public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, Bitmap image, String cookTime)
     {
-        RecipeInformation recipe=new RecipeInformation( "",name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,cookTime,0);
-        Repository.getInstance().createRecipe(recipe);
+        if(!name.equals("")&&ingredientArray!=null&&!preparation.equals("")&&!category.equals("")&&!cookTime.equals("")){
+            RecipeInformation recipe=new RecipeInformation( "",name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,Integer.parseInt(cookTime),0,false);
+            Repository.getInstance().createRecipe(recipe);
+            view.navigatetoMainRecipes();
+        }
+        else{
+            Toast.makeText(view,"one of the fields is empty",Toast.LENGTH_LONG).show();
+
+        }
 
     }
 }

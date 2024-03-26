@@ -44,6 +44,7 @@ RecipePresenter presenter;
     private Handler handler = new Handler();
     private Runnable runnable;
     ArrayList<Ingredients> ingredientArray;
+    TextView t;
     TextView ingredients;
     public int counter;
     RecipeInformation recipe;
@@ -56,6 +57,8 @@ RecipePresenter presenter;
     User user;
     Button saveRecipe;
     Button groceryList;
+
+    CountDownTimer c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +73,15 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         groceryList.setBackgroundResource(R.drawable.border_text);
-        presenter.addGroceryListClicked();
+        if(!recipe.getIfIngredientsSave())
+        {
+            presenter.addGroceryListClicked();
+
+        }
+        else {
+            //Toast.makeText("The Ingredients is already saved",Toast.LENGTH_LONG).show();
+        }
+
     }
 });
 
@@ -91,7 +102,19 @@ groceryList.setOnClickListener(new View.OnClickListener() {
         });
     }
 
-    public void setUi(RecipeInformation recipe){
+
+    public void setUi(RecipeInformation recipe,User user){
+        this.recipe=recipe;
+        if(recipe.getIfIngredientsSave())
+        {
+            groceryList.setBackgroundResource(R.drawable.border_text);
+        }
+        if(user.getIfSavedRecipes())
+        {
+            ImageView imageView=findViewById(R.id.imageViewSave);
+            imageView.setImageDrawable(getDrawable(R.drawable.saved));
+
+        }
 
         nameTextView = findViewById(R.id.nameRecipe);
         nameTextView.setText(recipe.getName());
@@ -119,24 +142,29 @@ groceryList.setOnClickListener(new View.OnClickListener() {
         {
             @Override
             public void onClick(View v) {
-                runOnUiThread(new Runnable() {
+
+                c = new CountDownTimer((counter+1) * 1000, 1000) {
                     @Override
-                    public void run() {
-                        TextView t = (TextView) findViewById(R.id.time);
+                    public void onTick(long l) {
+                         t = (TextView) findViewById(R.id.time);
                         t.setText(String.valueOf(counter));
 
                         counter--;
                     }
-                });
+
+                    @Override
+                    public void onFinish() {
+                        t.setText("Finished");
+                    }
+                };
+                c.start();
+
             }
         });
 
 
     }
-    public void TextViewToString(Integer num)
-    {
-        time.setText(String.valueOf(num));
-    }
+
     public void navigatetoMainRecipes()
     {
         Intent intent=new Intent(this, MainRecipesActivity.class);
