@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.graphics.fonts.FontFamily;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -122,7 +123,8 @@ groceryList.setOnClickListener(new View.OnClickListener() {
 
 
         nameTextView = findViewById(R.id.nameRecipe);
-        nameTextView.setText(recipe.getName());
+        nameTextView.setText("Recipe"+": "+recipe.getName());
+        nameTextView.setFontFeatureSettings("serif-monospace");
        ingredients=findViewById(R.id.ingredients);
        ingredientArray=recipe.getIngredientArray();
         String s="";
