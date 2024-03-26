@@ -22,15 +22,15 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
         this.view = view;
         Repository.getInstance().setLoadRecipesListener(this);
         Repository.getInstance().setLoadUserListener(this);
-        Repository.getInstance().readUser( FirebaseAuth.getInstance().getUid());
+        Repository.getInstance().readUser(FirebaseAuth.getInstance().getUid());
     }
     public void addGroceryListClicked()
     {
 
 
-            user.getIngredientArray().add(recipe);
-            Repository.getInstance().addUser(user);
-            ifIngredientsSave=true;
+        user.getIngredientArray().add(recipe);
+        Repository.getInstance().addUser(user);
+        ifIngredientsSave=true;
         recipe.setIfIngredientsSave(ifIngredientsSave);
         Repository.getInstance().createRecipe(recipe);
 
@@ -68,23 +68,22 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
         {
             user.setSavedRecipes(new ArrayList<>());
         }
-        Integer c=0;
+        int c=0;
         for (int i=0;i<user.getSavedRecipes().size();i++)
         {
             if(user.getSavedRecipes().get(i).equals(idRecipe))
-            {c=1;}
+            {
+                c=1;
+            }
 
         }
         if(c==0) {
             user.getSavedRecipes().add(idRecipe);
             Repository.getInstance().addUser(user);
-            ifRecipeSaved=true;
-            user.setIfSavedRecipes(ifRecipeSaved);
-            Repository.getInstance().updateUser(user);
         }
         else{
-            Toast.makeText(view,"The recipe is already saved",Toast.LENGTH_LONG).show();
-
+            user.getSavedRecipes().remove(idRecipe);
+            Repository.getInstance().addUser(user);
         }
 
     }

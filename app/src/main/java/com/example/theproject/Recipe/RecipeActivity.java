@@ -109,12 +109,17 @@ groceryList.setOnClickListener(new View.OnClickListener() {
         {
             groceryList.setBackgroundResource(R.drawable.border_text);
         }
-        if(user.getIfSavedRecipes())
-        {
-            ImageView imageView=findViewById(R.id.imageViewSave);
-            imageView.setImageDrawable(getDrawable(R.drawable.saved));
 
+        ImageView imageView=findViewById(R.id.imageViewSave);
+
+        if(user.getSavedRecipes().contains(recipe.getRecipeId())){
+            imageView.setImageDrawable(getDrawable(R.drawable.saved));
         }
+        else{
+            imageView.setImageDrawable(getDrawable(R.drawable.savepicture));
+        }
+
+
 
         nameTextView = findViewById(R.id.nameRecipe);
         nameTextView.setText(recipe.getName());
@@ -233,9 +238,6 @@ groceryList.setOnClickListener(new View.OnClickListener() {
 
     public void saveRecipe(View view) {
         presenter.SaveRecipe();
-        ImageView imageView=findViewById(R.id.imageViewSave);
-        imageView.setImageDrawable(getDrawable(R.drawable.saved));
-
 
     }
 }
