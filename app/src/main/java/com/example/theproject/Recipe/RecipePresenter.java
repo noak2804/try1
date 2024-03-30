@@ -62,6 +62,17 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
         view.setUi(recipe,user);
 
     }
+    public void ratingArray()
+    {
+        if(recipe.getRating()==null)
+        {
+            recipe.setRating(new ArrayList<>());
+        }
+        if(recipe.getRating().contains(user))
+        {
+            recipe.getRating()
+        }
+    }
     public void SaveRecipe()
     {
         if(user.getSavedRecipes()==null)

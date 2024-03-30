@@ -97,6 +97,8 @@ groceryList.setOnClickListener(new View.OnClickListener() {
                 ratingbar=(RatingBar)findViewById(R.id.ratingStars);
 
                 String rating=String.valueOf(ratingbar.getRating());
+                presenter.ratingArray();
+
 
                 Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
             }

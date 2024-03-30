@@ -19,6 +19,7 @@ Boolean ifIngredientsSave;
     Bitmap image;
     ArrayList<String> usersId;
     Integer cookTime;
+    ArrayList<User> rating;
     public RecipeInformation()
     {
         name="";
@@ -32,8 +33,9 @@ Boolean ifIngredientsSave;
         cookTime=null;
         averageRating=null;
         ifIngredientsSave=false;
+        rating=new ArrayList<>();
     }
-    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Bitmap image, Integer cookTime,Integer averageRating,Boolean ifIngredientsSave) {
+    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Bitmap image, Integer cookTime,Integer averageRating,Boolean ifIngredientsSave,ArrayList<User> rating) {
         super();
         this.name = name;
         this.ingredientArray = ingredientArray;
@@ -46,6 +48,19 @@ Boolean ifIngredientsSave;
        this.cookTime=cookTime;
        this.averageRating=averageRating;
        this.ifIngredientsSave=ifIngredientsSave;
+       this.rating=rating;
+    }
+
+    public ArrayList<User> getRating() {
+        return rating;
+    }
+
+    public void setRating(ArrayList<User> rating) {
+        this.rating = rating;
+    }
+
+    public Bitmap getImage() {
+        return image;
     }
 
     public Boolean getIfIngredientsSave() {
