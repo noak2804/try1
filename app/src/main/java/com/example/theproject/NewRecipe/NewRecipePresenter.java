@@ -2,12 +2,14 @@ package com.example.theproject.NewRecipe;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.theproject.MainRecipes.MainRecipesActivity;
+import com.example.theproject.R;
 import com.example.theproject.Recipe.RecipeActivity;
 import com.example.theproject.Repository;
 import com.example.theproject.model.Ingredients;
@@ -24,9 +26,10 @@ import java.util.ArrayList;
 
 public class NewRecipePresenter {
     NewRecipeActivity view;
-
+    Bitmap bitmap;
     public NewRecipePresenter(NewRecipeActivity view) {
         this.view = view;
+        bitmap =  null;
 
     }
     public void ToCreateNewRecipeClicked()
@@ -40,9 +43,12 @@ public class NewRecipePresenter {
     public void ToLogOut(){view.logout();}
     public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, Bitmap image, String cookTime)
     {
-        if(!name.equals("")&&ingredientArray!=null&&!preparation.equals("")&&!category.equals("")&&!cookTime.equals("")){
-            RecipeInformation recipe=new RecipeInformation( "",name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,Integer.parseInt(cookTime),0,false);
+        bitmap=image;
+        if(!name.equals("")&&ingredientArray!=null&&!preparation.equals("")&&!category.equals("")&&!cookTime.equals("")&&bitmap!=null){
+            RecipeInformation recipe=new RecipeInformation( "",name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,Integer.parseInt(cookTime),0,false,null,null);
             Repository.getInstance().createRecipe(recipe);
+            Repository.getInstance().addRecipePic(bitmap,recipe.getRecipeId());
+
             view.navigatetoMainRecipes();
         }
         else{
@@ -50,6 +56,10 @@ public class NewRecipePresenter {
 
         }
 
+    }
+
+    public void updateBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 }
 

@@ -1,5 +1,6 @@
 package com.example.theproject.MainRecipes;
 
+import android.graphics.Bitmap;
 import android.view.View;
 
 import com.example.theproject.Repository;
@@ -8,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
-public class MainRecipesPresenter implements Repository.LoadRecipesListener{
+public class MainRecipesPresenter implements Repository.LoadRecipesListener, Repository.LoadRecipePicListener {
     MainRecipesActivity view;
     int max=0;
 public MainRecipesPresenter(MainRecipesActivity view)
@@ -18,6 +19,7 @@ public MainRecipesPresenter(MainRecipesActivity view)
 
     Repository.getInstance().setLoadRecipesListener(this);
     Repository.getInstance().readRecipes();
+    Repository.getInstance().setLoadRecipePicListener(this);
     view.setRecyclerBest(recipes);
     view.setRecyclerSweets(recipes);
     view.setRecyclerBreakfastLunch(recipes);
@@ -91,9 +93,17 @@ public MainRecipesPresenter(MainRecipesActivity view)
             recipes2.remove(c);
 
         }
+            for (int i = 0; i < recipes.size(); i++) {
+                Repository.getInstance().loadRecipePic(recipes.get(i).getRecipeId());
+            }
         view.setRecyclerBest(recipesBest);
 
 
     }
 }
+
+    @Override
+    public void updateTvShowPic(Bitmap bitmap, String id) {
+        view.addBitmap(bitmap,id);
+    }
 }

@@ -7,6 +7,7 @@ import com.example.theproject.Repository;
 import com.example.theproject.model.RecipeInformation;
 import com.example.theproject.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.core.Repo;
 
 import java.util.ArrayList;
 
@@ -62,16 +63,46 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
         view.setUi(recipe,user);
 
     }
-    public void ratingArray()
+    public void ratingArray(Double r)
     {
         if(recipe.getRating()==null)
         {
             recipe.setRating(new ArrayList<>());
         }
-        if(recipe.getRating().contains(user))
+        if(recipe.getNumOfRating()==null)
         {
-            recipe.getRating()
+            recipe.setNumOfRating(new ArrayList<>());
         }
+        if(recipe.getRating().contains(user.getId()))
+        {
+          for (int i = 0; i < recipe.getRating().size(); i++) {
+            if(recipe.getRating().get(i).equals(user.getId()))
+            {
+                recipe.getNumOfRating().set(i,r);
+            }
+          }
+        }
+        else{
+            recipe.getRating().add(user.getId());
+            recipe.getNumOfRating().add(r);
+        }
+
+        Repository.getInstance().createRecipe(recipe);
+
+    }
+    public void average()
+    {
+        int sum=0;
+        for (int i = 0; i < recipe.getNumOfRating().size(); i++) {
+            sum+=recipe.getNumOfRating().get(i);
+        }
+        sum=sum/recipe.getNumOfRating().size();
+        recipe.setAverageRating(sum);
+        Repository.getInstance().createRecipe(recipe);
+    }
+
+    {
+
     }
     public void SaveRecipe()
     {

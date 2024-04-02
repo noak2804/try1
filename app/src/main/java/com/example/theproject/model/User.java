@@ -12,8 +12,6 @@ public class User {
     String password;
     String id;
     ArrayList< RecipeInformation> ingredientArray;
-
-
     ArrayList<String> savedRecipes;
 
 

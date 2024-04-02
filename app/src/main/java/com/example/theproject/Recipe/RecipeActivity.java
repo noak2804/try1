@@ -97,8 +97,9 @@ groceryList.setOnClickListener(new View.OnClickListener() {
                 ratingbar=(RatingBar)findViewById(R.id.ratingStars);
 
                 String rating=String.valueOf(ratingbar.getRating());
-                presenter.ratingArray();
-
+                Double rate=Double.parseDouble(rating) ;
+                presenter.ratingArray(rate);
+                presenter.average();
 
                 Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
             }

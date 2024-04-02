@@ -19,7 +19,8 @@ Boolean ifIngredientsSave;
     Bitmap image;
     ArrayList<String> usersId;
     Integer cookTime;
-    ArrayList<User> rating;
+    ArrayList<String> rating;
+    ArrayList<Double> numOfRating;
     public RecipeInformation()
     {
         name="";
@@ -34,8 +35,9 @@ Boolean ifIngredientsSave;
         averageRating=null;
         ifIngredientsSave=false;
         rating=new ArrayList<>();
+        numOfRating=new ArrayList<>();
     }
-    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Bitmap image, Integer cookTime,Integer averageRating,Boolean ifIngredientsSave,ArrayList<User> rating) {
+    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Bitmap image, Integer cookTime,Integer averageRating,Boolean ifIngredientsSave,ArrayList<String> rating,ArrayList<Double> numOfRating) {
         super();
         this.name = name;
         this.ingredientArray = ingredientArray;
@@ -49,13 +51,22 @@ Boolean ifIngredientsSave;
        this.averageRating=averageRating;
        this.ifIngredientsSave=ifIngredientsSave;
        this.rating=rating;
+       this.numOfRating=numOfRating;
     }
 
-    public ArrayList<User> getRating() {
+    public ArrayList<Double> getNumOfRating() {
+        return numOfRating;
+    }
+
+    public void setNumOfRating(ArrayList<Double> numOfRating) {
+        this.numOfRating = numOfRating;
+    }
+
+    public ArrayList<String> getRating() {
         return rating;
     }
 
-    public void setRating(ArrayList<User> rating) {
+    public void setRating(ArrayList<String> rating) {
         this.rating = rating;
     }
 

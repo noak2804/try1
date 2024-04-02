@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -88,7 +89,16 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter3);
     }
+    public void addBitmap(Bitmap bitmap, String id) {
+        adapter1.addBitmap(bitmap,id);
+        adapter1.notifyDataSetChanged();
 
+        adapter2.addBitmap(bitmap,id);
+        adapter2.notifyDataSetChanged();
+
+        adapter3.addBitmap(bitmap,id);
+        adapter3.notifyDataSetChanged();
+    }
     public void navigatetoCreateNewRecipe()
     {
         Intent intent=new Intent(this, NewRecipeActivity.class);

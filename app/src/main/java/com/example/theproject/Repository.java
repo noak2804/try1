@@ -1,14 +1,25 @@
 package com.example.theproject;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import androidx.annotation.NonNull;
+
 import com.example.theproject.model.RecipeInformation;
 import com.example.theproject.model.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class Repository {
@@ -48,7 +59,55 @@ public class Repository {
                 DatabaseReference myRef = database.getReference("users/"+ FirebaseAuth.getInstance().getUid());
                 myRef.setValue(user);
         }
+        public interface LoadRecipePicListener {
+                void updateTvShowPic(Bitmap bitmap, String id);
+        }
+        LoadRecipePicListener loadRecipePicListener;
 
+        public void setLoadRecipePicListener(LoadRecipePicListener loadProductPicListener) {
+                this.loadRecipePicListener = loadRecipePicListener;
+        }
+
+        public void addRecipePic(Bitmap bitmap, String id) {
+                StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+                StorageReference mountainImagesRef = storageRef.child("recipe/" + id + ".jpg");
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] data = baos.toByteArray();
+
+                UploadTask uploadTask = mountainImagesRef.putBytes(data);
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+
+                        }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                        }
+                });
+        }
+
+        public void loadRecipePic(String id) {
+                StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+                StorageReference islandRef = storageRef.child("recipe/" + id + ".jpg");
+
+                final long ONE_MEGABYTE = 1024 * 1024;
+                islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                        @Override
+                        public void onSuccess(byte[] bytes) {
+                                Bitmap compressedBitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                                loadRecipePicListener.updateTvShowPic(compressedBitmap,id);
+                        }
+                }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                                // Handle any errors
+                        }
+                });
+
+        }
         public void createRecipe(RecipeInformation recipe)
         {
                 if(recipe.getRecipeId().equals(""))

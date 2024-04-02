@@ -1,10 +1,12 @@
 package com.example.theproject.MainRecipes;
 
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,10 +21,23 @@ public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.
 
     ArrayList<RecipeInformation> recipes;
     ArrayList<RecipeInformation> filteredRecipes;
+    ArrayList<Bitmap> bitmaps;
 
     public MainRecipesAdapter(ArrayList<RecipeInformation> recipes){
         this.recipes=recipes;
         this.filteredRecipes=recipes;
+
+        bitmaps = new ArrayList<>();
+        for (int i = 0; i < recipes.size(); i++) {
+            bitmaps.add(null);
+        }
+    }
+    public void addBitmap(Bitmap bitmap, String id) {
+        for (int i = 0; i < recipes.size(); i++) {
+            if(recipes.get(i).getRecipeId().equals(id)){
+                bitmaps.set(i,bitmap);
+            }
+        }
     }
     public interface RecipeClickListener{
         void recipeClick(RecipeInformation recipe);
@@ -43,6 +58,9 @@ public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.
     @Override
     public void onBindViewHolder(@NonNull MainRecipesAdapter.ViewHolder holder, int position) {
         holder.name.setText(filteredRecipes.get(position).getName());
+        if(bitmaps.get(position)!=null){
+            holder.imageView.setImageBitmap(bitmaps.get(position));
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,10 +111,12 @@ public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView name;
+        ImageView imageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.nameRecipe1);
+            imageView = itemView.findViewById(R.id.imageView);
         }
     }
 }
