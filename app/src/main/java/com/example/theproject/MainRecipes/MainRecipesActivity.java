@@ -91,6 +91,7 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
     }
     public void addBitmap(Bitmap bitmap, String id) {
         adapter1.addBitmap(bitmap,id);
+
         adapter1.notifyDataSetChanged();
 
         adapter2.addBitmap(bitmap,id);

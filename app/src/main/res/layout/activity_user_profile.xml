@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/whatsapp_image_2023_12_08_at_17_40_07"
+    android:background="@drawable/user_profile"
     tools:context=".UserProfile.UserProfileActivity">
 
     <ScrollView
@@ -27,7 +27,7 @@
                 android:layout_marginTop="40dp"
                 android:fontFamily="serif"
                 android:text="User Profile"
-                android:textColor="@color/white"
+                android:textColor="#B19470"
                 android:textSize="34sp"
                 android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:text="my recipes:"
-                android:textColor="@color/white"
+                android:textColor="#B19470"
                 android:textSize="20sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -55,7 +55,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="30dp"
                 android:text="Saved:"
-                android:textColor="@color/white"
+                android:textColor="#B19470"
                 android:textSize="20sp" />
 
             <androidx.recyclerview.widget.RecyclerView

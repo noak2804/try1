@@ -93,9 +93,9 @@ public MainRecipesPresenter(MainRecipesActivity view)
             recipes2.remove(c);
 
         }
-            for (int i = 0; i < recipes.size(); i++) {
-                Repository.getInstance().loadRecipePic(recipes.get(i).getRecipeId());
-            }
+        for (int i = 0; i < recipes.size(); i++) {
+            Repository.getInstance().loadRecipePic(recipes.get(i).getRecipeId());
+        }
         view.setRecyclerBest(recipesBest);
 
 
@@ -103,7 +103,7 @@ public MainRecipesPresenter(MainRecipesActivity view)
 }
 
     @Override
-    public void updateTvShowPic(Bitmap bitmap, String id) {
+    public void updateRecipePic(Bitmap bitmap, String id) {
         view.addBitmap(bitmap,id);
     }
 }

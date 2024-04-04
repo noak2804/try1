@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/whatsapp_image_2023_12_08_at_17_40_07"
+    android:background="@drawable/signin_register"
     tools:context=".RegisterSignIn.Register.RegisterActivity">
 
     <EditText
@@ -96,7 +96,7 @@
         android:layout_marginEnd="10dp"
         android:fontFamily="cursive"
         android:text="Register"
-        android:textColor="@color/white"
+        android:textColor="#B19470"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

@@ -41,11 +41,11 @@ public class NewRecipePresenter {
     public void ToGroceryList(){view.navigatetoGroceryList();}
     public void ToMainRecipes(){view.navigatetoMainRecipes();}
     public void ToLogOut(){view.logout();}
-    public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, Bitmap image, String cookTime)
+    public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, String cookTime)
     {
-        bitmap=image;
+
         if(!name.equals("")&&ingredientArray!=null&&!preparation.equals("")&&!category.equals("")&&!cookTime.equals("")&&bitmap!=null){
-            RecipeInformation recipe=new RecipeInformation( "",name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,image,Integer.parseInt(cookTime),0,false,null,null);
+            RecipeInformation recipe=new RecipeInformation( "",name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,Integer.parseInt(cookTime),0,false,null,null);
             Repository.getInstance().createRecipe(recipe);
             Repository.getInstance().addRecipePic(bitmap,recipe.getRecipeId());
 

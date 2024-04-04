@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,6 +27,8 @@ import java.util.ArrayList;
 
 public class UserProfileActivity extends AppCompatActivity  implements MainRecipesAdapter.RecipeClickListener {
 UserProfilePresenter presenter;
+    MainRecipesAdapter mainRecipesAdapter;
+    MainRecipesAdapter saveRecipesAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +40,7 @@ UserProfilePresenter presenter;
     public void setRecyclerMine(ArrayList<RecipeInformation> recipes)
     {
         RecyclerView recyclerView=findViewById(R.id.myRecipes);
-        MainRecipesAdapter mainRecipesAdapter=new MainRecipesAdapter(recipes);
+        mainRecipesAdapter=new MainRecipesAdapter(recipes);
         mainRecipesAdapter.setRecipeClickListener(this);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
@@ -46,11 +49,21 @@ UserProfilePresenter presenter;
     public void setRecyclerSaved(ArrayList<RecipeInformation> recipes)
     {
         RecyclerView recyclerView=findViewById(R.id.savedRecipes);
-        MainRecipesAdapter mainRecipesAdapter=new MainRecipesAdapter(recipes);
-        mainRecipesAdapter.setRecipeClickListener(this);
+         saveRecipesAdapter=new MainRecipesAdapter(recipes);
+        saveRecipesAdapter.setRecipeClickListener(this);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mainRecipesAdapter);
+        recyclerView.setAdapter(saveRecipesAdapter);
+    }
+    public void addBitmap(Bitmap bitmap, String id) {
+        mainRecipesAdapter.addBitmap(bitmap,id);
+
+        mainRecipesAdapter.notifyDataSetChanged();
+
+        saveRecipesAdapter.addBitmap(bitmap,id);
+        saveRecipesAdapter.notifyDataSetChanged();
+
+
     }
 
     @Override

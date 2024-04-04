@@ -4,12 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/whatsapp_image_2023_12_08_at_17_40_07"
+    android:background="@drawable/new_recipe_and_recipe"
     tools:context=".Recipe.RecipeActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -34,9 +38,9 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="serif-monospace"
+                    android:fontFamily="cursive"
                     android:text="Recipe: "
-                    android:textColor="@color/white"
+                    android:textColor="#B19470"
                     android:textSize="34sp"
                     android:textStyle="bold" />
 
@@ -85,11 +89,12 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/bitmapRecipe"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/whatsapp_image_2023_11_16_at_10_09_55" />
             </LinearLayout>
 
@@ -106,7 +111,7 @@
                     android:layout_marginTop="60dp"
                     android:fontFamily="serif-monospace"
                     android:text="Ingredients:"
-                    android:textColor="@color/white"
+                    android:textColor="#B19470"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
@@ -134,7 +139,7 @@
                     android:layout_marginTop="60dp"
                     android:fontFamily="serif-monospace"
                     android:text="preparation:"
-                    android:textColor="@color/white"
+                    android:textColor="#B19470"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
@@ -163,7 +168,7 @@
                     android:fontFamily="serif-monospace"
                     android:includeFontPadding="true"
                     android:text="Type:"
-                    android:textColor="@color/white"
+                    android:textColor="#B19470"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
@@ -205,20 +210,13 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatButton
+                <ImageView
                     android:id="@+id/timer"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/background_button"
-                    android:fontFamily="sans-serif"
-                    android:text="time to cook"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="normal"></androidx.appcompat.widget.AppCompatButton>
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:onClick="timerclick"
+                    app:srcCompat="@drawable/timer" />
 
                 <TextView
                     android:id="@+id/time"

@@ -1,5 +1,6 @@
 package com.example.theproject.Recipe;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -11,7 +12,7 @@ import com.google.firebase.database.core.Repo;
 
 import java.util.ArrayList;
 
-public class RecipePresenter implements Repository.LoadRecipesListener,Repository.LoadUserListener {
+public class RecipePresenter implements Repository.LoadRecipesListener,Repository.LoadUserListener, Repository.LoadRecipePicListener  {
     RecipeActivity view;
     RecipeInformation recipe;
     String idRecipe;
@@ -22,6 +23,7 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
     public RecipePresenter(RecipeActivity view) {
         this.view = view;
         Repository.getInstance().setLoadRecipesListener(this);
+        Repository.getInstance().setLoadRecipePicListener(this);
         Repository.getInstance().setLoadUserListener(this);
         Repository.getInstance().readUser(FirebaseAuth.getInstance().getUid());
     }
@@ -59,6 +61,7 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
                 }
             }
         }
+        Repository.getInstance().loadRecipePic(recipe.getRecipeId());
 
         view.setUi(recipe,user);
 
@@ -135,5 +138,9 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
 
         this.user = user;
         Repository.getInstance().readRecipes();
+    }
+    @Override
+    public void updateRecipePic(Bitmap bitmap, String id) {
+        view.addBitmap(bitmap);
     }
 }

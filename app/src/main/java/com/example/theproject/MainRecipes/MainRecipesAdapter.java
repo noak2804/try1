@@ -60,6 +60,7 @@ public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.
         holder.name.setText(filteredRecipes.get(position).getName());
         if(bitmaps.get(position)!=null){
             holder.imageView.setImageBitmap(bitmaps.get(position));
+            holder.imageView.setVisibility(View.VISIBLE);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +117,7 @@ public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.nameRecipe1);
-            imageView = itemView.findViewById(R.id.imageView);
+            imageView = itemView.findViewById(R.id.bitmap);
         }
     }
 }

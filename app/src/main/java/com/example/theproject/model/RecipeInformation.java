@@ -16,7 +16,6 @@ Boolean ifIngredientsSave;
     ArrayList<Ingredients> ingredientArray;
     String preparation;
     String category;
-    Bitmap image;
     ArrayList<String> usersId;
     Integer cookTime;
     ArrayList<String> rating;
@@ -26,7 +25,7 @@ Boolean ifIngredientsSave;
         name="";
         this.preparation = "";
         this.category = "";
-        this.image = null;
+
         usersId=new ArrayList<>();
         userIdOwner="";
         recipeId="";
@@ -37,13 +36,13 @@ Boolean ifIngredientsSave;
         rating=new ArrayList<>();
         numOfRating=new ArrayList<>();
     }
-    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category,Bitmap image, Integer cookTime,Integer averageRating,Boolean ifIngredientsSave,ArrayList<String> rating,ArrayList<Double> numOfRating) {
+    public RecipeInformation(String recipeId,String name,String ownerUserId,ArrayList<Ingredients> ingredientArray, String preparation, String category, Integer cookTime,Integer averageRating,Boolean ifIngredientsSave,ArrayList<String> rating,ArrayList<Double> numOfRating) {
         super();
         this.name = name;
         this.ingredientArray = ingredientArray;
         this.preparation = preparation;
         this.category = category;
-        this.image = image;
+
         usersId=new ArrayList<>();
         this.userIdOwner=ownerUserId;
         this.recipeId=recipeId;
@@ -70,9 +69,6 @@ Boolean ifIngredientsSave;
         this.rating = rating;
     }
 
-    public Bitmap getImage() {
-        return image;
-    }
 
     public Boolean getIfIngredientsSave() {
         return ifIngredientsSave;
@@ -90,9 +86,6 @@ Boolean ifIngredientsSave;
         this.averageRating = averageRating;
     }
 
-    public void setImage(Bitmap image) {
-        this.image = image;
-    }
 
     public String getRecipeId() {
         return recipeId;

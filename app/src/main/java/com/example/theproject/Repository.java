@@ -60,11 +60,11 @@ public class Repository {
                 myRef.setValue(user);
         }
         public interface LoadRecipePicListener {
-                void updateTvShowPic(Bitmap bitmap, String id);
+                void updateRecipePic(Bitmap bitmap, String id);
         }
         LoadRecipePicListener loadRecipePicListener;
 
-        public void setLoadRecipePicListener(LoadRecipePicListener loadProductPicListener) {
+        public void setLoadRecipePicListener(LoadRecipePicListener loadRecipePicListener) {
                 this.loadRecipePicListener = loadRecipePicListener;
         }
 
@@ -98,7 +98,7 @@ public class Repository {
                         @Override
                         public void onSuccess(byte[] bytes) {
                                 Bitmap compressedBitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                                loadRecipePicListener.updateTvShowPic(compressedBitmap,id);
+                                loadRecipePicListener.updateRecipePic(compressedBitmap,id);
                         }
                 }).addOnFailureListener(new OnFailureListener() {
                         @Override

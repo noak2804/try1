@@ -1,5 +1,7 @@
 package com.example.theproject.UserProfile;
 
+import android.graphics.Bitmap;
+
 import com.example.theproject.Repository;
 import com.example.theproject.model.RecipeInformation;
 import com.example.theproject.model.User;
@@ -8,7 +10,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class UserProfilePresenter implements Repository.LoadRecipesListener,Repository.LoadUserListener{
+public class UserProfilePresenter implements Repository.LoadRecipesListener,Repository.LoadUserListener, Repository.LoadRecipePicListener{
     UserProfileActivity view;
     User user;
 
@@ -16,6 +18,7 @@ public class UserProfilePresenter implements Repository.LoadRecipesListener,Repo
         this.view = view;
         ArrayList<RecipeInformation> recipes=new ArrayList<>();
         Repository.getInstance().setLoadRecipesListener(this);
+        Repository.getInstance().setLoadRecipePicListener(this);
         Repository.getInstance().setLoadUserListener(this);
         Repository.getInstance().readUser( FirebaseAuth.getInstance().getUid());
 
@@ -47,6 +50,9 @@ public class UserProfilePresenter implements Repository.LoadRecipesListener,Repo
 
 
         }
+        for (int i = 0; i < recipes.size(); i++) {
+            Repository.getInstance().loadRecipePic(recipes.get(i).getRecipeId());
+        }
 
         view.setRecyclerSaved(recipesSave);
         view.setRecyclerMine(recipesMine);
@@ -65,5 +71,9 @@ public class UserProfilePresenter implements Repository.LoadRecipesListener,Repo
     public void updateUser(User user) {
         this.user=user;
         Repository.getInstance().readRecipes();
+    }
+    @Override
+    public void updateRecipePic(Bitmap bitmap, String id) {
+        view.addBitmap(bitmap,id);
     }
 }

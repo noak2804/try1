@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/whatsapp_image_2023_12_08_at_17_40_07"
+    android:background="@drawable/signin_register"
     tools:context=".RegisterSignIn.SignIn.SignInActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -30,7 +30,7 @@
         android:layout_marginBottom="70dp"
         android:fontFamily="sans-serif"
         android:text="Sign In"
-        android:textColor="@color/white"
+        android:textColor="#B19470"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"

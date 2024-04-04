@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.fonts.FontFamily;
 import android.os.Bundle;
@@ -80,7 +81,7 @@ groceryList.setOnClickListener(new View.OnClickListener() {
 
         }
         else {
-            //Toast.makeText("The Ingredients is already saved",Toast.LENGTH_LONG).show();
+            Toast.makeText(view.getContext(),"The Ingredients is already saved",Toast.LENGTH_LONG).show();
         }
 
     }
@@ -105,7 +106,13 @@ groceryList.setOnClickListener(new View.OnClickListener() {
             }
         });
     }
+    public void addBitmap(Bitmap bitmap) {
+        ImageView imageView=findViewById(R.id.bitmapRecipe);
+        imageView.setVisibility(View.VISIBLE);
+        imageView.setImageBitmap(bitmap);
 
+
+    }
 
     public void setUi(RecipeInformation recipe,User user){
         this.recipe=recipe;
@@ -143,34 +150,6 @@ groceryList.setOnClickListener(new View.OnClickListener() {
         type.setText(recipe.getCategory());
 
         counter=recipe.getCookTime();
-        timer= (Button) findViewById(R.id.timer);
-
-
-
-
-        timer.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-
-                c = new CountDownTimer((counter+1) * 1000, 1000) {
-                    @Override
-                    public void onTick(long l) {
-                         t = (TextView) findViewById(R.id.time);
-                        t.setText(String.valueOf(counter));
-
-                        counter--;
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        t.setText("Finished");
-                    }
-                };
-                c.start();
-
-            }
-        });
 
 
     }
@@ -244,5 +223,24 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     public void saveRecipe(View view) {
         presenter.SaveRecipe();
 
+    }
+
+    public void timerclick(View view) {
+
+        c = new CountDownTimer((counter+1) * 1000, 1000) {
+            @Override
+            public void onTick(long l) {
+                t = (TextView) findViewById(R.id.time);
+                t.setText(String.valueOf(counter));
+
+                counter--;
+            }
+
+            @Override
+            public void onFinish() {
+                t.setText("Finished");
+            }
+        };
+        c.start();
     }
 }

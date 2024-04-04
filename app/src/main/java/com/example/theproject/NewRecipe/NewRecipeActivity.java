@@ -100,6 +100,7 @@ Bitmap image;
 
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), temp);
+                presenter.updateBitmap(bitmap);
                 image = bitmap;
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -147,7 +148,7 @@ Bitmap image;
              else{
             category= radioCategorySelected.getText().toString();}
 
-        presenter.CreateNewRecipeClicked(nameRecipe.getText().toString(),ingredients,preparation.getText().toString(),category,null,cookTime);
+        presenter.CreateNewRecipeClicked(nameRecipe.getText().toString(),ingredients,preparation.getText().toString(),category,cookTime);
 
     }
 
