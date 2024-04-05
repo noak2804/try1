@@ -37,7 +37,7 @@
                 android:gravity="center"
                 android:text="World of Recipes"
                 android:textColor="#B19470"
-                android:textSize="34sp"
+                android:textSize="40sp"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.SearchView

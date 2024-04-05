@@ -24,7 +24,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:fontFamily="cursive"
-                android:text="new recipe"
+                android:text="new recipe:"
                 android:textColor="#B19470"
                 android:textSize="48sp"
                 android:textStyle="bold" />
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:fontFamily="casual"
-                android:text="name of recipe"
+                android:text="name's recipe:"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_button"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="serif"
                     android:onClick="addPhoto"
                     android:text="add photo"
                     android:textColor="@color/white" />
@@ -104,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="70dp"
                     android:background="@drawable/background_button"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="serif"
                     android:onClick="addIngredients"
                     android:text="add Ingrediant"
                     android:textColor="@color/white"
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:layout_marginRight="130dp"
+                android:layout_marginRight="110dp"
                 android:fontFamily="casual"
                 android:text="preparation:"
                 android:textSize="20sp"
@@ -211,8 +211,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/background_button"
+                android:fontFamily="serif"
                 android:onClick="submitNewRecipe"
-                android:text="submit"
+                android:text="create"
                 android:textColor="@color/white"
                 android:textStyle="normal" />
 

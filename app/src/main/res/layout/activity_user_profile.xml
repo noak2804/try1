@@ -25,10 +25,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
-                android:fontFamily="serif"
-                android:text="User Profile"
+                android:fontFamily="cursive"
+                android:text="User Profile:"
                 android:textColor="#B19470"
-                android:textSize="34sp"
+                android:textSize="48sp"
                 android:textStyle="bold" />
 
             <TextView

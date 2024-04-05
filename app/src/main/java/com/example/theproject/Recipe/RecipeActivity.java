@@ -58,7 +58,7 @@ RecipePresenter presenter;
     String userId;
     User user;
     Button saveRecipe;
-    Button groceryList;
+    ImageView groceryList;
 
     CountDownTimer c;
 
@@ -68,13 +68,14 @@ RecipePresenter presenter;
         setContentView(R.layout.activity_recipe);
         presenter=new RecipePresenter(this);
 
-        groceryList=(Button) findViewById(R.id.addgroceryList);
+        groceryList= findViewById(R.id.addgroceryList);
 
 
 groceryList.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        groceryList.setBackgroundResource(R.drawable.border_text);
+        groceryList.setImageDrawable((getDrawable(R.drawable.check)));
+
         if(!recipe.getIfIngredientsSave())
         {
             presenter.addGroceryListClicked();
@@ -118,7 +119,7 @@ groceryList.setOnClickListener(new View.OnClickListener() {
         this.recipe=recipe;
         if(recipe.getIfIngredientsSave())
         {
-            groceryList.setBackgroundResource(R.drawable.border_text);
+            groceryList.;
         }
 
         ImageView imageView=findViewById(R.id.imageViewSave);
@@ -134,7 +135,7 @@ groceryList.setOnClickListener(new View.OnClickListener() {
 
         nameTextView = findViewById(R.id.nameRecipe);
         nameTextView.setText("Recipe"+": "+recipe.getName());
-        nameTextView.setFontFeatureSettings("serif-monospace");
+        nameTextView.setFontFeatureSettings("serif");
        ingredients=findViewById(R.id.ingredients);
        ingredientArray=recipe.getIngredientArray();
         String s="";
