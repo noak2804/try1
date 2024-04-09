@@ -119,7 +119,7 @@ groceryList.setOnClickListener(new View.OnClickListener() {
         this.recipe=recipe;
         if(recipe.getIfIngredientsSave())
         {
-            groceryList.;
+            groceryList.setImageDrawable((getDrawable(R.drawable.check)));
         }
 
         ImageView imageView=findViewById(R.id.imageViewSave);
@@ -231,6 +231,7 @@ groceryList.setOnClickListener(new View.OnClickListener() {
         c = new CountDownTimer((counter+1) * 1000, 1000) {
             @Override
             public void onTick(long l) {
+
                 t = (TextView) findViewById(R.id.time);
                 t.setText(String.valueOf(counter));
 

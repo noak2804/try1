@@ -8,7 +8,8 @@
          />
     <item
         android:id="@+id/createNewRecipe"
-        android:title="Create New Recipe" />
+        android:title="Create New Recipe"
+       />
     <item
         android:id="@+id/userProfile"
         android:title="User Profile" />
