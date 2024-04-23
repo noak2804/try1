@@ -54,7 +54,7 @@
             android:fontFamily="serif"
             android:onClick="signIn"
             android:text="Sign In"
-            android:textColor="#1B1916"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -70,7 +70,7 @@
             android:fontFamily="serif"
             android:onClick="reg"
             android:text="registration"
-            android:textColor="#0C0C0B"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             app:strokeColor="#DFE4E6" />

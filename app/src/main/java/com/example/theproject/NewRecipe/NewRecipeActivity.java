@@ -40,6 +40,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class NewRecipeActivity extends AppCompatActivity  {
+    private static final int CAMERA_PIC_REQUEST = 1337;
     ArrayList <View>ingredientArray =new ArrayList<View>();
     EditText nameRecipe;
     Button deleteButton;
@@ -57,10 +58,12 @@ public class NewRecipeActivity extends AppCompatActivity  {
     RadioButton radioCategorySelected;
     Button addphoto;
 
+    ImageView imageView;
+    Bitmap imagecamera;
+    Bitmap image;
 
-Bitmap image;
-
-
+    Button btnGallery;
+    Button btnCamera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,10 +78,10 @@ Bitmap image;
         nameRecipe=findViewById(R.id.name);
 
 
-
+         btnCamera=findViewById(R.id.camera);
         preparation=findViewById(R.id.preparation);
 
-        Button btnGallery = findViewById(R.id.addPhotos);
+         btnGallery = findViewById(R.id.addPhotos);
 
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,10 +93,28 @@ Bitmap image;
             }
         });
 
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                startActivityForResult(intent, 1337);
+            }
+
+        });
+
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+         imageView = findViewById(R.id.imageView);
+        if (requestCode == 1337) {
+            Bundle extras = data.getExtras();
+            if (extras != null) {
+                Bitmap imagecamera = (Bitmap) extras.get("data");
+                imageView.setImageBitmap(imagecamera);
+            }
+        }
         if (resultCode == RESULT_OK) {
             Uri temp = data.getData();
             Bitmap bitmap = null;
@@ -105,11 +126,12 @@ Bitmap image;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            ImageView imageView = findViewById(R.id.imageView);
+
             imageView.setImageBitmap(image);
             imageView.setVisibility(View.VISIBLE);
-            addphoto = findViewById(R.id.addPhotos);
-            addphoto.setVisibility(View.GONE);
+           btnCamera.setVisibility(View.GONE);
+            btnGallery.setVisibility(View.GONE);
+
 
         }
     }

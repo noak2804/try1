@@ -61,6 +61,17 @@
                     android:hint="   name" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="add photo:"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -72,16 +83,37 @@
                     android:id="@+id/addPhotos"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/background_button"
                     android:fontFamily="serif"
                     android:onClick="addPhoto"
-                    android:text="add photo"
+                    android:text="gallery"
                     android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_button"
+                    android:fontFamily="serif"
+                    android:onClick="camera"
+                    android:text="camera"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:visibility="gone"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -102,7 +134,8 @@
                     android:id="@+id/ingred"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="70dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="30dp"
                     android:background="@drawable/background_button"
                     android:fontFamily="serif"
                     android:onClick="addIngredients"
@@ -112,15 +145,17 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/delete_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="70dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="20dp"
                     android:background="@drawable/background_button"
                     android:enabled="true"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="serif"
                     android:onClick="delete_button"
                     android:text="remove"
                     android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:visibility="invisible" />
             </LinearLayout>
 
