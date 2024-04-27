@@ -228,12 +228,17 @@ groceryList.setOnClickListener(new View.OnClickListener() {
 
     public void timerclick(View view) {
 
-        c = new CountDownTimer((counter+1) * 1000, 1000) {
+        final int minute=counter;
+        counter=minute*60;
+        c = new CountDownTimer(minute * 60000, 1000) {
             @Override
             public void onTick(long l) {
 
                 t = (TextView) findViewById(R.id.time);
-                t.setText(String.valueOf(counter));
+                int minutesLeft = (int) l / 60000; // Convert remaining milliseconds to minutes
+                int secondsLeft = (int) (l % 60000) / 1000; // Convert remaining milliseconds to seconds
+                t.setText(String.format("%02d:%02d", minutesLeft, secondsLeft));
+
 
                 counter--;
             }
