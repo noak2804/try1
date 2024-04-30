@@ -3,10 +3,16 @@ package com.example.theproject.MainRecipes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.theproject.GroceryList.GroceryListActivity;
+import com.example.theproject.MyWorker;
 import com.example.theproject.NewRecipe.NewRecipeActivity;
 import com.example.theproject.R;
 import com.example.theproject.Recipe.RecipeActivity;
@@ -24,9 +31,11 @@ import com.example.theproject.model.RecipeInformation;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class MainRecipesActivity extends AppCompatActivity implements MainRecipesAdapter.RecipeClickListener {
 
+    private static final int NOTIFICATION_REQUEST_ID = 0;
     MainRecipesPresenter presenter;
     private MainRecipesAdapter adapter1;
     private MainRecipesAdapter adapter2;
@@ -36,6 +45,24 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_recipes);
         presenter=new MainRecipesPresenter(this);
+
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(),
+                android.Manifest.permission.POST_NOTIFICATIONS) !=
+                PackageManager.PERMISSION_GRANTED) {
+            String[] permissions = {Manifest.permission.POST_NOTIFICATIONS};
+            requestPermissions(permissions, NOTIFICATION_REQUEST_ID);
+        }
+
+
+
+        WorkManager.getInstance(this).cancelAllWork();
+
+        WorkRequest request = new OneTimeWorkRequest.Builder(MyWorker.class)
+                .setInitialDelay(2000, TimeUnit.DAYS).build();
+        WorkManager.getInstance(this).enqueue(request);
+
+
+
 
 
         SearchView searchView = findViewById(R.id.searchView);
