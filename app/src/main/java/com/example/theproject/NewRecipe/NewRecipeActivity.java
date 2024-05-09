@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.theproject.GroceryList.GroceryListActivity;
 import com.example.theproject.MainRecipes.MainRecipesActivity;
@@ -78,7 +79,6 @@ public class NewRecipeActivity extends AppCompatActivity  {
         nameRecipe=findViewById(R.id.name);
 
 
-         btnCamera=findViewById(R.id.camera);
         preparation=findViewById(R.id.preparation);
 
          btnGallery = findViewById(R.id.addPhotos);
@@ -93,14 +93,6 @@ public class NewRecipeActivity extends AppCompatActivity  {
             }
         });
 
-        btnCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                startActivityForResult(intent, 1337);
-            }
-
-        });
 
 
     }
@@ -108,13 +100,7 @@ public class NewRecipeActivity extends AppCompatActivity  {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
          imageView = findViewById(R.id.imageView);
-        if (requestCode == 1337) {
-            Bundle extras = data.getExtras();
-            if (extras != null) {
-                Bitmap imagecamera = (Bitmap) extras.get("data");
-                imageView.setImageBitmap(imagecamera);
-            }
-        }
+
         if (resultCode == RESULT_OK) {
             Uri temp = data.getData();
             Bitmap bitmap = null;
@@ -129,7 +115,7 @@ public class NewRecipeActivity extends AppCompatActivity  {
 
             imageView.setImageBitmap(image);
             imageView.setVisibility(View.VISIBLE);
-           btnCamera.setVisibility(View.GONE);
+
             btnGallery.setVisibility(View.GONE);
 
 
@@ -153,8 +139,10 @@ public class NewRecipeActivity extends AppCompatActivity  {
             unit=v.findViewById(R.id.unit);
             amount=v.findViewById(R.id.amount);
             int a=Integer.parseInt(amount.getText().toString());
+
             Ingredients temp=new Ingredients(ingredient.getText().toString(),a,unit.getText().toString());
             ingredients.add(temp);
+
         }
         textView=findViewById(R.id.cook_time);
         cookTime=textView.getText().toString();
