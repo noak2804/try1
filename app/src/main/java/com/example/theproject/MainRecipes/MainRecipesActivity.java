@@ -14,11 +14,16 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.theproject.GroceryList.GroceryListActivity;
 import com.example.theproject.MyWorker;
@@ -47,7 +52,7 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         presenter=new MainRecipesPresenter(this);
 
         if (ActivityCompat.checkSelfPermission(getApplicationContext(),
-                android.Manifest.permission.POST_NOTIFICATIONS) !=
+                Manifest.permission.POST_NOTIFICATIONS) !=
                 PackageManager.PERMISSION_GRANTED) {
             String[] permissions = {Manifest.permission.POST_NOTIFICATIONS};
             requestPermissions(permissions, NOTIFICATION_REQUEST_ID);
@@ -66,6 +71,9 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
 
 
         SearchView searchView = findViewById(R.id.searchView);
+        EditText searchText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+        searchText.setTextColor(Color.BLACK);
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String queryString) {
@@ -88,6 +96,7 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         });
 
     }
+
     public void setRecyclerBest(ArrayList<RecipeInformation> recipes)
     {
         RecyclerView recyclerView=findViewById(R.id.recycleRecipeBest);

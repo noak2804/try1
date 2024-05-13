@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/bitmap"
-            android:layout_width="110dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:visibility="invisible"
             app:srcCompat="@drawable/whatsapp_image_2023_11_16_at_10_09_55" />
     </androidx.cardview.widget.CardView>

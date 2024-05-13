@@ -6,7 +6,8 @@
          <item name="colorPrimary">#B19470</item>
     </style>
 
-    <style name="Theme.TheProject" parent="Base.Theme.TheProject" />
+    <style name="Theme.TheProject" parent="Base.Theme.TheProject"
+        />
 
 
 </resources>

@@ -46,19 +46,22 @@
                 android:layout_margin="20dp"
                 android:fontFamily="casual"
                 android:text="name's recipe:"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="270dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/border_text">
+                android:background="@drawable/border_text"
+                app:boxStrokeColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/name"
                     android:layout_width="270dp"
                     android:layout_height="wrap_content"
-                    android:hint="   name" />
+                    android:hint="   name"
+                    android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -69,6 +72,7 @@
                 android:layout_weight="1"
                 android:fontFamily="casual"
                 android:text="add photo:"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -142,12 +146,12 @@
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:layout_marginRight="110dp"
                 android:fontFamily="casual"
                 android:text="preparation:"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -158,7 +162,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border_text"
                 android:ems="10"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/textView25"
@@ -167,6 +172,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="casual"
                 android:text="Cook Time:"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -178,7 +184,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_text"
                 android:ems="10"
-                android:inputType="time" />
+                android:inputType="time"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -188,6 +195,7 @@
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:text="category"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -203,21 +211,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="breakfast" />
+                    android:text="breakfast"
+                    android:textColor="@color/black" />
 
                 <RadioButton
                     android:id="@+id/launch2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="lunch" />
+                    android:text="lunch"
+                    android:textColor="@color/black" />
 
                 <RadioButton
                     android:id="@+id/sweets2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="sweets" />
+                    android:text="sweets"
+                    android:textColor="@color/black" />
 
             </RadioGroup>
 

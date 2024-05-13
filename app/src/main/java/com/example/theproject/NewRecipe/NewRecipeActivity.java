@@ -2,7 +2,6 @@ package com.example.theproject.NewRecipe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,20 +24,14 @@ import android.widget.Toast;
 import com.example.theproject.GroceryList.GroceryListActivity;
 import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.R;
-import com.example.theproject.Recipe.RecipeActivity;
 import com.example.theproject.RegisterSignIn.Home.MainActivity;
-import com.example.theproject.Repository;
 import com.example.theproject.UserProfile.UserProfileActivity;
 import com.example.theproject.model.Ingredients;
-import com.example.theproject.model.RecipeInformation;
-import com.example.theproject.model.User;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class NewRecipeActivity extends AppCompatActivity  {
     private static final int CAMERA_PIC_REQUEST = 1337;
@@ -47,6 +40,7 @@ public class NewRecipeActivity extends AppCompatActivity  {
     Button deleteButton;
     EditText unit;
     EditText amount;
+    TextInputEditText ingredient;
     ArrayList<Ingredients> ingredients;
     LinearLayout layout_ingredients;
     NewRecipePresenter presenter;
@@ -57,14 +51,10 @@ public class NewRecipeActivity extends AppCompatActivity  {
     String cookTime;
     RadioGroup radioCategory;
     RadioButton radioCategorySelected;
-    Button addphoto;
-
     ImageView imageView;
-    Bitmap imagecamera;
     Bitmap image;
 
     Button btnGallery;
-    Button btnCamera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +64,9 @@ public class NewRecipeActivity extends AppCompatActivity  {
         deleteButton=findViewById(R.id.delete_button);
         layout_ingredients=findViewById(R.id.ingerdientLayoutRecipe);
         ArrayList<Ingredients> ingredients=new ArrayList<Ingredients>(ingredientArray.size());
-
+        unit=null;
+        amount=null;
+      ingredient =null;
 
         nameRecipe=findViewById(R.id.name);
 
@@ -107,8 +99,9 @@ public class NewRecipeActivity extends AppCompatActivity  {
 
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), temp);
-                presenter.updateBitmap(bitmap);
+
                 image = bitmap;
+                presenter.updateBitmap(bitmap);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -134,14 +127,21 @@ public class NewRecipeActivity extends AppCompatActivity  {
         for(int i=0;i<ingredientArray.size();i++)
         {
             View v =  ingredientArray.get(i);
-            TextInputEditText ingredient =v.findViewById(R.id.nameIngred);
+             ingredient =v.findViewById(R.id.nameIngred1);
 
             unit=v.findViewById(R.id.unit);
             amount=v.findViewById(R.id.amount);
-            int a=Integer.parseInt(amount.getText().toString());
+            if(ingredient.getText().toString()!=""&&amount.getText().toString()!=""&&unit.getText().toString()!="")
+            {
+                int a=Integer.parseInt(amount.getText().toString());
+                Ingredients temp=new Ingredients(ingredient.getText().toString(),a,unit.getText().toString());
+                ingredients.add(temp);
+            }
+            else {
+                Toast.makeText(this,"one of the fields is empty",Toast.LENGTH_LONG).show();
 
-            Ingredients temp=new Ingredients(ingredient.getText().toString(),a,unit.getText().toString());
-            ingredients.add(temp);
+            }
+
 
         }
         textView=findViewById(R.id.cook_time);
