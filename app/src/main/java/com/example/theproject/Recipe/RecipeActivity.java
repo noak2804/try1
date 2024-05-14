@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.fonts.FontFamily;
 import android.os.Bundle;
@@ -42,25 +44,18 @@ import java.util.TimerTask;
 public class RecipeActivity extends AppCompatActivity {
 RecipePresenter presenter;
     TextView nameTextView,preparation,type;
-    private final int interval = 1000; // 1 Second
     private Handler handler = new Handler();
-    private Runnable runnable;
     ArrayList<Ingredients> ingredientArray;
     TextView t;
     TextView ingredients;
     public int counter;
     RecipeInformation recipe;
-    Button timer;
-    TextView time;
     RatingBar ratingbar;
     Button submitButton;
-    String recipeId;
-    String userId;
-    User user;
-    Button saveRecipe;
     ImageView groceryList;
-
+ImageView timerclicked;
     CountDownTimer c;
+    Button restart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +64,8 @@ RecipePresenter presenter;
         presenter=new RecipePresenter(this);
 
         groceryList= findViewById(R.id.addgroceryList);
-
-
+        timerclicked=findViewById(R.id.timer);
+        restart=findViewById(R.id.restart);
 groceryList.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
@@ -106,6 +101,7 @@ groceryList.setOnClickListener(new View.OnClickListener() {
                 Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
             }
         });
+
     }
     public void addBitmap(Bitmap bitmap) {
         ImageView imageView=findViewById(R.id.bitmapRecipe);
@@ -227,13 +223,14 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     }
 
     public void timerclick(View view) {
-
+        boolean b=true;
         final int minute=counter;
         counter=minute*60;
         c = new CountDownTimer(minute * 60000, 1000) {
             @Override
             public void onTick(long l) {
-
+                timerclicked.setVisibility(View.INVISIBLE);
+                restart.setVisibility(View.VISIBLE);
                 t = (TextView) findViewById(R.id.time);
                 int minutesLeft = (int) l / 60000; // Convert remaining milliseconds to minutes
                 int secondsLeft = (int) (l % 60000) / 1000; // Convert remaining milliseconds to seconds
@@ -245,9 +242,15 @@ groceryList.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onFinish() {
+                timerclicked.setVisibility(View.VISIBLE);
                 t.setText("Finished");
             }
-        };
+        };c.start();
+
+    }
+
+    public void restart(View view) {
+        c.cancel();
         c.start();
     }
 }

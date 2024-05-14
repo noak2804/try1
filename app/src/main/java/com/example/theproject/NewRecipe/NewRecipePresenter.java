@@ -44,7 +44,7 @@ public class NewRecipePresenter {
     public void CreateNewRecipeClicked(String name, ArrayList<Ingredients> ingredientArray, String preparation, String category, String cookTime)
     {
 
-        if(!name.equals("")&&ingredientArray!=null&&!preparation.equals("")&&!category.equals("")&&!cookTime.equals("")&&bitmap!=null){
+        if(!name.equals("")&&ingredientArray!=null&&!preparation.equals("")&&category!=null&&!cookTime.equals("")&&bitmap!=null){
             RecipeInformation recipe=new RecipeInformation( "",name,FirebaseAuth.getInstance().getUid(),ingredientArray,preparation,category,Integer.parseInt(cookTime),0,false,null,null);
             Repository.getInstance().createRecipe(recipe);
             Repository.getInstance().addRecipePic(bitmap,recipe.getRecipeId());

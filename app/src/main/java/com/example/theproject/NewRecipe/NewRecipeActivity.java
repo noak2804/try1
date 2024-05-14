@@ -32,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class NewRecipeActivity extends AppCompatActivity  {
     private static final int CAMERA_PIC_REQUEST = 1337;
@@ -124,6 +125,24 @@ public class NewRecipeActivity extends AppCompatActivity  {
 
     public void submitNewRecipe(View view) {
         ingredients=new ArrayList<>();
+
+
+        textView=findViewById(R.id.cook_time);
+        cookTime=textView.getText().toString();
+
+        radioCategory=(RadioGroup) findViewById(R.id.radioButton);
+
+        int selectedId=radioCategory.getCheckedRadioButtonId();
+        radioCategorySelected=(RadioButton) findViewById(selectedId);
+        if(radioCategorySelected==null)
+        {
+            category=null;
+        }
+        else{
+            category= radioCategorySelected.getText().toString();}
+
+        boolean b=false;
+
         for(int i=0;i<ingredientArray.size();i++)
         {
             View v =  ingredientArray.get(i);
@@ -131,34 +150,28 @@ public class NewRecipeActivity extends AppCompatActivity  {
 
             unit=v.findViewById(R.id.unit);
             amount=v.findViewById(R.id.amount);
-            if(ingredient.getText().toString()!=""&&amount.getText().toString()!=""&&unit.getText().toString()!="")
+            if(!Objects.requireNonNull(ingredient.getText()).toString().equals("")&&!amount.getText().toString().equals("")&&!unit.getText().toString().equals(""))
             {
                 int a=Integer.parseInt(amount.getText().toString());
                 Ingredients temp=new Ingredients(ingredient.getText().toString(),a,unit.getText().toString());
                 ingredients.add(temp);
+                b=true;
             }
             else {
-                Toast.makeText(this,"one of the fields is empty",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"one of the fields is empty1",Toast.LENGTH_LONG).show();
+                b=false;
 
             }
 
-
         }
-        textView=findViewById(R.id.cook_time);
-        cookTime=textView.getText().toString();
+        if(b)
+        {
+            presenter.CreateNewRecipeClicked(nameRecipe.getText().toString(),ingredients,preparation.getText().toString(),category,cookTime);
+        }
+        else {
+            Toast.makeText(this,"one of the fields is empty2",Toast.LENGTH_LONG).show();
+        }
 
-        radioCategory=(RadioGroup) findViewById(R.id.radioButton);
-
-             int selectedId=radioCategory.getCheckedRadioButtonId();
-             radioCategorySelected=(RadioButton) findViewById(selectedId);
-             if(radioCategorySelected==null)
-             {
-                 category=null;
-             }
-             else{
-            category= radioCategorySelected.getText().toString();}
-
-        presenter.CreateNewRecipeClicked(nameRecipe.getText().toString(),ingredients,preparation.getText().toString(),category,cookTime);
 
     }
 
