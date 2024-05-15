@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.R;
@@ -29,8 +30,15 @@ public class SignInActivity extends AppCompatActivity {
     public void signInSubmit(View view) {
         EditText email = findViewById(R.id.signInEmailAddress);
         EditText password = findViewById(R.id.loginPassword);
+        if(!email.getText().toString().equals("")&&!password.getText().toString().equals(""))
+        {
+            presenter.continueClicked(email.getText().toString(),password.getText().toString());
+        }
+        else{
+            Toast.makeText(this,"one of the fields is empty",Toast.LENGTH_LONG).show();
+        }
 
-        presenter.continueClicked(email.getText().toString(),password.getText().toString());
+
     }
     public void navigatetoRegister()
     {

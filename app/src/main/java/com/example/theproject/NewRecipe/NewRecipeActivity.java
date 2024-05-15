@@ -158,7 +158,7 @@ public class NewRecipeActivity extends AppCompatActivity  {
                 b=true;
             }
             else {
-                Toast.makeText(this,"one of the fields is empty1",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"one of the fields is empty",Toast.LENGTH_LONG).show();
                 b=false;
 
             }
@@ -169,7 +169,7 @@ public class NewRecipeActivity extends AppCompatActivity  {
             presenter.CreateNewRecipeClicked(nameRecipe.getText().toString(),ingredients,preparation.getText().toString(),category,cookTime);
         }
         else {
-            Toast.makeText(this,"one of the fields is empty2",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"one of the fields is empty",Toast.LENGTH_LONG).show();
         }
 
 

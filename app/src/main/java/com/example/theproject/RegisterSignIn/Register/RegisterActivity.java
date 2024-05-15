@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.theproject.MainRecipes.MainRecipesActivity;
 import com.example.theproject.R;
@@ -48,6 +49,13 @@ RegisterPresenter presenter;
         EditText name = findViewById(R.id.fullName);
         EditText phone = findViewById(R.id.phone);
 
-       presenter.createClicked(name.getText().toString(),email.getText().toString(),Integer.parseInt(phone.getText().toString()),password.getText().toString());
+        if(!email.getText().toString().equals("")&&!password.getText().toString().equals("")&&!name.getText().toString().equals("")&&!phone.getText().toString().equals(""))
+        {
+            presenter.createClicked(name.getText().toString(),email.getText().toString(),Integer.parseInt(phone.getText().toString()),password.getText().toString());
+        }
+
+        else{
+            Toast.makeText(this,"one of the fields is empty",Toast.LENGTH_LONG).show();
+        }
     }
 }
