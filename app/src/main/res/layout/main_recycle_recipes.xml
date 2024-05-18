@@ -18,6 +18,7 @@
             android:id="@+id/bitmap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
             android:visibility="invisible"
             app:srcCompat="@drawable/whatsapp_image_2023_11_16_at_10_09_55" />
     </androidx.cardview.widget.CardView>

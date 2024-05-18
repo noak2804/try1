@@ -9,14 +9,13 @@ import java.util.ArrayList;
 
 public class RecipeInformation {
     String name;
-Boolean ifIngredientsSave;
+    Boolean ifIngredientsSave;
     Integer averageRating;
     String userIdOwner;
     String recipeId;
     ArrayList<Ingredients> ingredientArray;
     String preparation;
     String category;
-    ArrayList<String> usersId;
     Integer cookTime;
     ArrayList<String> rating;
     ArrayList<Double> numOfRating;
@@ -26,7 +25,6 @@ Boolean ifIngredientsSave;
         this.preparation = "";
         this.category = "";
 
-        usersId=new ArrayList<>();
         userIdOwner="";
         recipeId="";
         this.ingredientArray = new ArrayList<>();
@@ -43,7 +41,6 @@ Boolean ifIngredientsSave;
         this.preparation = preparation;
         this.category = category;
 
-        usersId=new ArrayList<>();
         this.userIdOwner=ownerUserId;
         this.recipeId=recipeId;
        this.cookTime=cookTime;
@@ -99,48 +96,21 @@ Boolean ifIngredientsSave;
         return cookTime;
     }
 
-    public void setCookTime(Integer cookTime) {
-        this.cookTime = cookTime;
-    }
 
     public String getUserIdOwner() {
         return userIdOwner;
-    }
-
-    public void setUserIdOwner(String userIdOwner) {
-        this.userIdOwner = userIdOwner;
-    }
-
-    public ArrayList<String> getUsersId() {
-        return usersId;
-    }
-
-    public void setUsersId(ArrayList<String> usersId) {
-        this.usersId = usersId;
     }
 
     public ArrayList<Ingredients> getIngredientArray() {
         return ingredientArray;
     }
 
-    public void setIngredientArray(ArrayList<Ingredients> ingredientArray) {
-        this.ingredientArray = ingredientArray;
-    }
-
     public String getPreparation() {
         return preparation;
     }
 
-    public void setPreparation(String preparation) {
-        this.preparation = preparation;
-    }
-
     public String getCategory() {
         return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getName() {
@@ -150,11 +120,5 @@ Boolean ifIngredientsSave;
     public void setName(String name) {
         this.name = name;
     }
-    public void addIng(Ingredients temp)
-    {
-        ingredientArray.add(temp);
-    }
-
-
 
 }
