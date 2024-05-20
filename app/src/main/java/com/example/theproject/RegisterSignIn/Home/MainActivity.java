@@ -40,16 +40,17 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this, SignInActivity.class);
         startActivity(intent);
     }
-    public void signIn(View view) {
-
-       presenter.signInClicked();
-    }
 
     public void navigateToRegister()
     {
         Intent intent=new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
+    public void signIn(View view) {
+
+        presenter.signInClicked();
+    }
+
     public void reg(View view) {
         presenter.registerClicked();
     }

@@ -42,9 +42,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class RecipeActivity extends AppCompatActivity {
-RecipePresenter presenter;
+    RecipePresenter presenter;
     TextView nameTextView,preparation,type;
-    private Handler handler = new Handler();
     ArrayList<Ingredients> ingredientArray;
     TextView t;
     TextView ingredients;
@@ -53,7 +52,7 @@ RecipePresenter presenter;
     RatingBar ratingbar;
     Button submitButton;
     ImageView groceryList;
-ImageView timerclicked;
+    ImageView timerclicked;
     CountDownTimer c;
     Button restart;
 
@@ -223,7 +222,6 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     }
 
     public void timerclick(View view) {
-        boolean b=true;
         final int minute=counter;
         counter=minute*60;
         c = new CountDownTimer(minute * 60000, 1000) {

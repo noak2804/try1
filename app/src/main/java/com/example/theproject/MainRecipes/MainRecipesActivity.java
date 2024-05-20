@@ -156,7 +156,12 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         Intent intent=new Intent(this, MainRecipesActivity.class);
         startActivity(intent);
     }
+    public void logout() {
 
+        FirebaseAuth.getInstance().signOut();
+        Intent intent=new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void recipeClick(RecipeInformation recipe) {
@@ -174,12 +179,7 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
 
     }
 
-    public void logout() {
 
-        FirebaseAuth.getInstance().signOut();
-        Intent intent=new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

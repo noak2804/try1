@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class NewRecipeActivity extends AppCompatActivity  {
-    private static final int CAMERA_PIC_REQUEST = 1337;
+
     ArrayList <View>ingredientArray =new ArrayList<View>();
     EditText nameRecipe;
     Button deleteButton;
@@ -46,15 +46,12 @@ public class NewRecipeActivity extends AppCompatActivity  {
     LinearLayout layout_ingredients;
     NewRecipePresenter presenter;
     TextView textView;
-
     EditText preparation;
     String category;
     String cookTime;
     RadioGroup radioCategory;
     RadioButton radioCategorySelected;
     ImageView imageView;
-    Bitmap image;
-
     Button btnGallery;
 
     @Override
@@ -64,7 +61,6 @@ public class NewRecipeActivity extends AppCompatActivity  {
         presenter=new NewRecipePresenter(this);
         deleteButton=findViewById(R.id.delete_button);
         layout_ingredients=findViewById(R.id.ingerdientLayoutRecipe);
-        ArrayList<Ingredients> ingredients=new ArrayList<Ingredients>(ingredientArray.size());
         unit=null;
         amount=null;
       ingredient =null;
@@ -101,13 +97,12 @@ public class NewRecipeActivity extends AppCompatActivity  {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), temp);
 
-                image = bitmap;
                 presenter.updateBitmap(bitmap);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
-            imageView.setImageBitmap(image);
+            imageView.setImageBitmap(bitmap);
             imageView.setVisibility(View.VISIBLE);
 
             btnGallery.setVisibility(View.GONE);

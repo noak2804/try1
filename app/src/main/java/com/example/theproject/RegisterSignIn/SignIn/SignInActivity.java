@@ -22,11 +22,7 @@ public class SignInActivity extends AppCompatActivity {
         presenter=new SignInPresenter(this);
     }
 
-    public void navigatetoMainRecipes()
-    {
-        Intent intent=new Intent(this, MainRecipesActivity.class);
-        startActivity(intent);
-    }
+
     public void signInSubmit(View view) {
         EditText email = findViewById(R.id.signInEmailAddress);
         EditText password = findViewById(R.id.loginPassword);
@@ -39,6 +35,11 @@ public class SignInActivity extends AppCompatActivity {
         }
 
 
+    }
+    public void navigatetoMainRecipes()
+    {
+        Intent intent=new Intent(this, MainRecipesActivity.class);
+        startActivity(intent);
     }
     public void navigatetoRegister()
     {

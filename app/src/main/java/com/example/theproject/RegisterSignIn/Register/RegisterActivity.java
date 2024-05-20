@@ -18,25 +18,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
-RegisterPresenter presenter;
-    private FirebaseAuth mAuth;
+    RegisterPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         presenter=new RegisterPresenter(this);
-        mAuth = FirebaseAuth.getInstance();
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            Intent intent = new Intent(this, MainRecipesActivity.class);
-            startActivity(intent);
-        }
-    }
 
     public void navigatetoMainRecipes()
     {

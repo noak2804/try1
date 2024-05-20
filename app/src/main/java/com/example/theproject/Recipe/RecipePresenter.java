@@ -18,7 +18,6 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
     String idRecipe;
     User user;
     Boolean ifIngredientsSave=false;
-    Boolean ifRecipeSaved=false;
 
     public RecipePresenter(RecipeActivity view) {
         this.view = view;

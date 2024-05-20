@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class GroceryListActivity extends AppCompatActivity  {
     GroceryListPresenter presenter;
-    TextView namesRecipe,ingredList;
+    TextView ingredList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +49,6 @@ public class GroceryListActivity extends AppCompatActivity  {
         inflater.inflate(R.menu.menu_recipes, menu_recipe);
         return true;
 
-    }
-    public void navigatetoRecipe()
-    {
-        Intent intent=new Intent(this, RecipeActivity.class);
-        startActivity(intent);
     }
     public void navigatetoCreateNewRecipe()
     {

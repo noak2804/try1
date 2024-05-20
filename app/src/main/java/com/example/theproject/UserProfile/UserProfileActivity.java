@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 
 public class UserProfileActivity extends AppCompatActivity  implements MainRecipesAdapter.RecipeClickListener {
-UserProfilePresenter presenter;
+    UserProfilePresenter presenter;
     MainRecipesAdapter mainRecipesAdapter;
     MainRecipesAdapter saveRecipesAdapter;
     @Override
@@ -100,9 +100,6 @@ UserProfilePresenter presenter;
     {
         Intent intent=new Intent(this, MainRecipesActivity.class);
         startActivity(intent);
-    }
-    public void groceryList(View view) {
-        presenter.ToGroceryList();
     }
     public void logout() {
 
