@@ -11,7 +11,7 @@ public class User {
     Integer phone;
     String password;
     String id;
-    ArrayList< RecipeInformation> ingredientArray;
+    ArrayList< RecipeInformation> recipesArray;
     ArrayList<String> savedRecipes;
 
 
@@ -22,12 +22,12 @@ public class User {
        password="";
        id="";
        this.savedRecipes = new ArrayList<String>();
-       this.ingredientArray=new ArrayList<>();
+       this.recipesArray=new ArrayList<>();
 
    }
 
 
-    public User(String name, String email, Integer phone, String password,String id, ArrayList<String> savedRecipes, ArrayList<RecipeInformation> ingredientArray) {
+    public User(String name, String email, Integer phone, String password,String id, ArrayList<String> savedRecipes, ArrayList<RecipeInformation> recipesArray) {
        super();
         this.name = name;
         this.email = email;
@@ -35,13 +35,13 @@ public class User {
         this.password = password;
         this.id=id;
         this.savedRecipes=savedRecipes;
-        this.ingredientArray=ingredientArray;
+        this.recipesArray=recipesArray;
 
     }
 
 
-    public ArrayList<RecipeInformation> getIngredientArray() {
-        return ingredientArray;
+    public ArrayList<RecipeInformation> getRecipesArray() {
+        return recipesArray;
     }
 
 

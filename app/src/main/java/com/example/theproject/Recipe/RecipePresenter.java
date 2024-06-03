@@ -30,7 +30,7 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
     {
 
 
-        user.getIngredientArray().add(recipe);
+        user.getRecipesArray().add(recipe);
         Repository.getInstance().addUser(user);
         ifIngredientsSave=true;
         recipe.setIfIngredientsSave(ifIngredientsSave);

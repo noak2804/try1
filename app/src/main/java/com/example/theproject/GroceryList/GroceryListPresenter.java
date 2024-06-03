@@ -36,10 +36,10 @@ public class GroceryListPresenter implements Repository.LoadUserListener{
     public void updateUser(User user) {
         this.user=user;
         ArrayList<Ingredients> ingredients;
-        for(int i=0;i<user.getIngredientArray().size();i++)
+        for(int i=0;i<user.getRecipesArray().size();i++)
         {
-            s+=user.getIngredientArray().get(i).getName()+": "+"\n";
-            ingredients = user.getIngredientArray().get(i).getIngredientArray();
+            s+=user.getRecipesArray().get(i).getName()+": "+"\n";
+            ingredients = user.getRecipesArray().get(i).getIngredientArray();
             for (int k=0; k<ingredients.size();k++) {
 
                 s +=  ingredients.get(k).getIngredients() + " " + ingredients.get(k).getAmount() + " " + ingredients.get(k).getUnit() + "\n";

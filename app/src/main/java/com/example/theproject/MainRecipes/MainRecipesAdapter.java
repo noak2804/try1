@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.theproject.R;
+import com.example.theproject.Repository;
 import com.example.theproject.model.RecipeInformation;
 
 import java.util.ArrayList;
@@ -32,13 +33,7 @@ public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.
             bitmaps.add(null);
         }
     }
-    public void addBitmap(Bitmap bitmap, String id) {
-        for (int i = 0; i < recipes.size(); i++) {
-            if(recipes.get(i).getRecipeId().equals(id)){
-                bitmaps.set(i,bitmap);
-            }
-        }
-    }
+
     public interface RecipeClickListener{
         void recipeClick(RecipeInformation recipe);
     }
@@ -85,11 +80,16 @@ public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.
                     for (RecipeInformation recipe : recipes) {
                         if (recipe.getName().toLowerCase().contains(charSequenceString.toLowerCase())) {
                             filteredList.add(recipe);
+
                         }
                         filteredRecipes = filteredList;
                     }
 
                 }
+                for (int i = 0; i < filteredRecipes.size(); i++) {
+                    Repository.getInstance().loadRecipePic(filteredRecipes.get(i).getRecipeId());
+                }
+
                 FilterResults results = new FilterResults();
                 results.values = filteredRecipes;
                 return results;
@@ -118,6 +118,14 @@ public class MainRecipesAdapter extends RecyclerView.Adapter<MainRecipesAdapter.
             super(itemView);
             name=itemView.findViewById(R.id.nameRecipe1);
             imageView = itemView.findViewById(R.id.bitmap);
+        }
+    }
+    public void addBitmap(Bitmap bitmap, String id) {
+
+        for (int i = 0; i < filteredRecipes.size(); i++) {
+            if(filteredRecipes.get(i).getRecipeId().equals(id)){
+                bitmaps.set(i,bitmap);
+            }
         }
     }
 }

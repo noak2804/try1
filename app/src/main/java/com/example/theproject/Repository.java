@@ -24,6 +24,11 @@ import java.util.ArrayList;
 
 public class Repository {
         private static Repository instance;
+        LoadUserListener loadUserListener;
+        LoadRecipesListener loadRecipesListener;
+
+        LoadRecipePicListener loadRecipePicListener;
+
 
         private Repository(){}
         public static Repository getInstance(){
@@ -38,7 +43,6 @@ public class Repository {
         public interface LoadUserListener{
                 void updateUser(User user);
         }
-        LoadUserListener loadUserListener;
 
 
         public void setLoadUserListener(LoadUserListener loadUserListener) {
@@ -48,7 +52,6 @@ public class Repository {
         public interface LoadRecipesListener{
                 void updateRecipes(ArrayList<RecipeInformation> recipes);
         }
-        LoadRecipesListener loadRecipesListener;
 
         public void setLoadRecipesListener(LoadRecipesListener loadRecipesListener) {
                 this.loadRecipesListener = loadRecipesListener;
@@ -62,9 +65,7 @@ public class Repository {
         public interface LoadRecipePicListener {
                 void updateRecipePic(Bitmap bitmap, String id);
         }
-        LoadRecipePicListener loadRecipePicListener;
-
-        public void setLoadRecipePicListener(LoadRecipePicListener loadRecipePicListener) {
+         public void setLoadRecipePicListener(LoadRecipePicListener loadRecipePicListener) {
                 this.loadRecipePicListener = loadRecipePicListener;
         }
 
