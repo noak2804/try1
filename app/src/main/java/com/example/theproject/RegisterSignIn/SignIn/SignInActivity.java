@@ -29,6 +29,7 @@ public class SignInActivity extends AppCompatActivity {
         if(!email.getText().toString().equals("")&&!password.getText().toString().equals(""))
         {
             presenter.continueClicked(email.getText().toString(),password.getText().toString());
+
         }
         else{
             Toast.makeText(this,"one of the fields is empty",Toast.LENGTH_LONG).show();

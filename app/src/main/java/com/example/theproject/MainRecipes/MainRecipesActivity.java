@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.theproject.GroceryList.GroceryListActivity;
 import com.example.theproject.MyWorker;
@@ -31,25 +32,30 @@ import com.example.theproject.NewRecipe.NewRecipeActivity;
 import com.example.theproject.R;
 import com.example.theproject.Recipe.RecipeActivity;
 import com.example.theproject.RegisterSignIn.Home.MainActivity;
+import com.example.theproject.Repository;
 import com.example.theproject.UserProfile.UserProfileActivity;
 import com.example.theproject.model.RecipeInformation;
+import com.example.theproject.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class MainRecipesActivity extends AppCompatActivity implements MainRecipesAdapter.RecipeClickListener {
+public class MainRecipesActivity extends AppCompatActivity implements MainRecipesAdapter.RecipeClickListener{
 
     private static final int NOTIFICATION_REQUEST_ID = 0;
     MainRecipesPresenter presenter;
     private MainRecipesAdapter adapter1;
     private MainRecipesAdapter adapter2;
     private MainRecipesAdapter adapter3;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_recipes);
         presenter=new MainRecipesPresenter(this);
+
 
         if (ActivityCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.POST_NOTIFICATIONS) !=
@@ -63,7 +69,7 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         WorkManager.getInstance(this).cancelAllWork();
 
         WorkRequest request = new OneTimeWorkRequest.Builder(MyWorker.class)
-                .setInitialDelay(2000, TimeUnit.DAYS).build();
+                .setInitialDelay(2, TimeUnit.DAYS).build();
         WorkManager.getInstance(this).enqueue(request);
 
 
@@ -207,4 +213,7 @@ public class MainRecipesActivity extends AppCompatActivity implements MainRecipe
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }

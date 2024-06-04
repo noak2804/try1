@@ -2,15 +2,18 @@ package com.example.theproject.MainRecipes;
 
 import android.graphics.Bitmap;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.theproject.Repository;
 import com.example.theproject.model.RecipeInformation;
+import com.example.theproject.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
-public class MainRecipesPresenter implements Repository.LoadRecipesListener, Repository.LoadRecipePicListener {
+public class MainRecipesPresenter implements Repository.LoadRecipesListener, Repository.LoadRecipePicListener, Repository.LoadUserListener {
     MainRecipesActivity view;
+    User user;
     int max=0;
 public MainRecipesPresenter(MainRecipesActivity view)
 {
@@ -20,9 +23,12 @@ public MainRecipesPresenter(MainRecipesActivity view)
     Repository.getInstance().setLoadRecipesListener(this);
     Repository.getInstance().readRecipes();
     Repository.getInstance().setLoadRecipePicListener(this);
+    Repository.getInstance().setLoadUserListener(this);
+    Repository.getInstance().readUser(FirebaseAuth.getInstance().getUid());
     view.setRecyclerBest(recipes);
     view.setRecyclerSweets(recipes);
     view.setRecyclerBreakfastLunch(recipes);
+
 
 
 
@@ -105,5 +111,11 @@ public MainRecipesPresenter(MainRecipesActivity view)
     @Override
     public void updateRecipePic(Bitmap bitmap, String id) {
         view.addBitmap(bitmap,id);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        this.user=user;
+        Toast.makeText(view, "welcome "+user.getName(), Toast.LENGTH_LONG).show();
     }
 }
