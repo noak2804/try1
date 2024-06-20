@@ -45,6 +45,9 @@ public class User {
     }
 
 
+    public void setRecipesArray(ArrayList<RecipeInformation> recipesArray) {
+        this.recipesArray = recipesArray;
+    }
 
     public String getName() {
         return name;

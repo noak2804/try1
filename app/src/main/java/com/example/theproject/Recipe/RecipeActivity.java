@@ -65,22 +65,7 @@ public class RecipeActivity extends AppCompatActivity {
         groceryList= findViewById(R.id.addgroceryList);
         timerclicked=findViewById(R.id.timer);
         restart=findViewById(R.id.restart);
-groceryList.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        groceryList.setImageDrawable((getDrawable(R.drawable.check)));
 
-        if(!recipe.getIfIngredientsSave())
-        {
-            presenter.addGroceryListClicked();
-
-        }
-        else {
-            Toast.makeText(view.getContext(),"The Ingredients is already saved",Toast.LENGTH_LONG).show();
-        }
-
-    }
-});
 
 
 
@@ -112,9 +97,18 @@ groceryList.setOnClickListener(new View.OnClickListener() {
 
     public void setUi(RecipeInformation recipe,User user){
         this.recipe=recipe;
-        if(recipe.getIfIngredientsSave())
+        Boolean b=false;
+        for (int i=0;i<user.getRecipesArray().size();i++)
         {
-            groceryList.setImageDrawable((getDrawable(R.drawable.check)));
+            if(user.getRecipesArray().get(i).getRecipeId().equals(recipe.getRecipeId()))
+            {
+                groceryList.setImageDrawable((getDrawable(R.drawable.check)));
+                b=true;
+            }
+
+        }
+        if(b==false){
+            groceryList.setImageDrawable((getDrawable(R.drawable.plus)));
         }
 
         ImageView imageView=findViewById(R.id.imageViewSave);
@@ -215,7 +209,6 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     }
 
 
-
     public void saveRecipe(View view) {
         presenter.SaveRecipe();
 
@@ -250,5 +243,9 @@ groceryList.setOnClickListener(new View.OnClickListener() {
     public void restart(View view) {
         c.cancel();
         c.start();
+    }
+
+    public void addGroceryList(View view) {
+        presenter.addGroceryListClicked();
     }
 }

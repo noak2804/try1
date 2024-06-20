@@ -23,8 +23,7 @@ public MainRecipesPresenter(MainRecipesActivity view)
     Repository.getInstance().setLoadRecipesListener(this);
     Repository.getInstance().readRecipes();
     Repository.getInstance().setLoadRecipePicListener(this);
-    Repository.getInstance().setLoadUserListener(this);
-    Repository.getInstance().readUser(FirebaseAuth.getInstance().getUid());
+
     view.setRecyclerBest(recipes);
     view.setRecyclerSweets(recipes);
     view.setRecyclerBreakfastLunch(recipes);
@@ -116,6 +115,5 @@ public MainRecipesPresenter(MainRecipesActivity view)
     @Override
     public void updateUser(User user) {
         this.user=user;
-        Toast.makeText(view, "welcome "+user.getName(), Toast.LENGTH_LONG).show();
     }
 }

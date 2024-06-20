@@ -1,9 +1,12 @@
 package com.example.theproject.Recipe;
 
+import static androidx.core.content.ContextCompat.getDrawable;
+
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.theproject.R;
 import com.example.theproject.Repository;
 import com.example.theproject.model.RecipeInformation;
 import com.example.theproject.model.User;
@@ -17,7 +20,6 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
     RecipeInformation recipe;
     String idRecipe;
     User user;
-    Boolean ifIngredientsSave=false;
 
     public RecipePresenter(RecipeActivity view) {
         this.view = view;
@@ -28,13 +30,33 @@ public class RecipePresenter implements Repository.LoadRecipesListener,Repositor
     }
     public void addGroceryListClicked()
     {
+        if(user.getRecipesArray()==null)
+        {
+            user.setRecipesArray(new ArrayList<>());
+        }
+        RecipeInformation rec=null;
+
+        int c=0;
+        for (int i=0;i<user.getRecipesArray().size();i++)
+        {
+            if(user.getRecipesArray().get(i).getRecipeId().equals(idRecipe))
+            {
+                c=1;
+                rec=user.getRecipesArray().get(i);
+
+            }
+
+        }
+        if(c==0) {
+            user.getRecipesArray().add(recipe);
+            Repository.getInstance().addUser(user);
+        }
+        else{
+            user.getRecipesArray().remove(rec);
+            Repository.getInstance().addUser(user);
+        }
 
 
-        user.getRecipesArray().add(recipe);
-        Repository.getInstance().addUser(user);
-        ifIngredientsSave=true;
-        recipe.setIfIngredientsSave(ifIngredientsSave);
-        Repository.getInstance().createRecipe(recipe);
 
     }
     public void ToCreateNewRecipeClicked()
